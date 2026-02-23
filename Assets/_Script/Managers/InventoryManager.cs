@@ -1,101 +1,122 @@
-// using UnityEngine;
+using UnityEngine;
 
-// public class InventoryManager : Singleton<InventoryManager>
-// {
-//     [Header("Data")]
-//     public int[,] cells =
-//     {
-//         {0,0,1,1,1,0,0},
-//         {0,1,1,1,1,1,1},
-//         {1,1,1,1,1,1,1},
-//         {1,1,1,1,1,1,1},
-//         {0,1,1,1,1,1,0},
-//         {0,0,1,1,1,0,0},
-//     };
-//     private bool[,] itemGrid;
-//     public DropSlot[,] slots;
-//     public Vector2 gridSize;
+public class InventoryManager : MonoBehaviour
+{
+    [Header("Controllers")]
+    [SerializeField] private PlayerInventoryController playerController;
+    [SerializeField] private OtherInventoryController otherController;
 
-//     protected override void Awake()
-//     {
-//         base.Awake();
-//     }
+    private bool hasOtherInventory = false;
 
-//     public void InitGrid(Vector2 grid)
-//     {
-//         gridSize = grid;
+    void Start()
+    {
+        playerController.Initialize(DataManager.Instance.currentGameData.inventoryData);
+    }
 
-//         itemGrid = new bool[(int)gridSize.x, (int)gridSize.y];
-//         slots = new DropSlot[(int)gridSize.x, (int)gridSize.y];
-//     }
+    void OnEnable()
+    {
+        InputEvent.OnOpenInventoryPressed += OnOpenInventoryPressed;
+        InputEvent.OnCloseInventoryPressed += OnCloseInventoryPressed;
 
-//     public void InitSlot(int x, int y, DropSlot slot)
-//     {
-//         if (cells[y, x] == 1)
-//         {
-//             itemGrid[x, y] = false;
-//             slots[x, y] = slot;
-//         }
-//         else
-//         {
-//             itemGrid[x, y] = true;
-//             slots[x, y] = slot;
-//         }
-//     }
+        InventoryEvent.OnPickItem += HandlePickItem;
+        InventoryEvent.OnDropItem += HandleDropItem;
+        InventoryEvent.OnCanPlace += HandleCanPlace;
+        InventoryEvent.OnRemoveItem += HandleRemoveItem;
+        InventoryEvent.OnInitOtherInventory += HandleInitOtherInventory;
+        InventoryEvent.OnDestroyOtherInventory += HandleDestroyOtherInventory;
+        InventoryEvent.OnAddItem += HandleAddItem;
+    }
 
-//     public bool CanPlace(ItemData item, int startX, int startY)
-//     {
-//         var shape = item.itemShape;
+    void OnDisable()
+    {
+        InputEvent.OnOpenInventoryPressed -= OnOpenInventoryPressed;
+        InputEvent.OnCloseInventoryPressed -= OnCloseInventoryPressed;
 
-//         for (int y = 0; y < shape.height; y++)
-//         {
-//             for (int x = 0; x < shape.width; x++)
-//             {
-//                 if (!shape.Occupies(x, y))
-//                     continue;
+        InventoryEvent.OnPickItem -= HandlePickItem;
+        InventoryEvent.OnDropItem -= HandleDropItem;
+        InventoryEvent.OnCanPlace -= HandleCanPlace;
+        InventoryEvent.OnRemoveItem -= HandleRemoveItem;
+        InventoryEvent.OnInitOtherInventory -= HandleInitOtherInventory;
+        InventoryEvent.OnDestroyOtherInventory -= HandleDestroyOtherInventory;
+        InventoryEvent.OnAddItem -= HandleAddItem;
+    }
 
-//                 int gx = startX + x;
-//                 int gy = startY + y;
+    // ============= Input Handling =============
 
-//                 if (!InSlotFrame(gx, gy))
-//                     return false;
+    void OnOpenInventoryPressed()
+    {
+        playerController.Show();
 
-//                 if (IsOccupied(gx, gy))
-//                     return false;
-//             }
-//         }
-//         return true;
-//     }
+        if (hasOtherInventory)
+        {
+            otherController.Show();
+        }
 
-//     public void SetOccupiedSlot(ItemData item, int startX, int startY, bool isPlace)
-//     {
-//         var shape = item.itemShape;
+        InputManager.Instance.EnableUIInput(true);
+    }
 
-//         for (int y = 0; y < shape.height; y++)
-//         {
-//             for (int x = 0; x < shape.width; x++)
-//             {
-//                 if (!shape.Occupies(x, y))
-//                     continue;
+    void OnCloseInventoryPressed()
+    {
+        InputManager.Instance.EnableUIInput(false);
+    }
 
-//                 int gx = startX + x;
-//                 int gy = startY + y;
+    void OnInteractPressed()
+    {
 
-//                 itemGrid[gx, gy] = isPlace;
-//                 slots[gx, gy].SetOccupied(isPlace);
-//             }
-//         }
-//     }
-//     //==================================================
-//     bool InSlotFrame(int x, int y)
-//     {
-//         if (x < 0 || y < 0 || x >= itemGrid.GetLength(0) || y >= itemGrid.GetLength(1))
-//             return false;
-//         return true;
-//     }
+    }
 
-//     bool IsOccupied(int x, int y)
-//     {
-//         return itemGrid[x, y];
-//     }
-// }
+    // ============= Event Routing =============
+    void HandlePickItem(ItemUI item)
+    {
+        GetController(item.isBelongPlayer).PickItem(item);
+        SetAllRaycast(false);
+    }
+
+    void HandleDropItem(ItemUI item, DropSlot dropSlot)
+    {
+        GetController(dropSlot.isBelongPlayer).DropItem(item, dropSlot);
+        SetAllRaycast(true);
+    }
+
+    bool HandleCanPlace(ItemUI item, DropSlot dropSlot)
+    {
+        return GetController(dropSlot.isBelongPlayer).CanPlace(item.itemData, dropSlot.x, dropSlot.y);
+    }
+
+    void HandleRemoveItem()
+    {
+        SetAllRaycast(true);
+    }
+
+    void HandleInitOtherInventory(InventoryData inventory)
+    {
+        otherController.Initialize(inventory);
+        hasOtherInventory = true;
+    }
+
+    void HandleDestroyOtherInventory()
+    {
+        otherController.Dispose();
+        hasOtherInventory = false;
+    }
+
+    void HandleAddItem(ItemData item)
+    {
+        playerController.AddItem(item);
+    }
+
+    // ============= Helpers =============
+    BaseInventoryController GetController(bool isPlayer)
+    {
+        return isPlayer ? playerController : otherController;
+    }
+
+    void SetAllRaycast(bool value)
+    {
+        playerController.SetRaycast(value);
+        if (hasOtherInventory)
+        {
+            otherController.SetRaycast(value);
+        }
+    }
+}

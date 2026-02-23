@@ -127,7 +127,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 1
-    - _Water_Depth: 5
+    - _Water_Depth: 30
     - _WaveHeight: 0.5
     - _WaveScale: 1
     - _WaveSpeed: 1

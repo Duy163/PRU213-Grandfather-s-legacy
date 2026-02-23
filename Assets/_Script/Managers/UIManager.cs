@@ -8,6 +8,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject OtherInventoryUI;
     [SerializeField] private GameObject TalkUI;
 
+    private bool isEnable = false;
+
     public enum state
     {
         None,
@@ -21,6 +23,42 @@ public class UIManager : Singleton<UIManager>
     {
         base.Awake();
     }
+
+    void OnEnable()
+    {
+        InputEvent.OnOpenInventoryPressed += OnOpenInventory;
+        InputEvent.OnCloseInventoryPressed += OnClose;
+        FishingEvent.OnEnableFishing += OnOpenFishing;
+        InventoryEvent.OnInitOtherInventory += OnOpenOtherInventory;
+    }
+
+    void OnOpenInventory()
+    {
+        SetInventoryUI(true);
+        isEnable = true;
+    }
+
+    void OnOpenFishing(ItemData item)
+    {
+        SetFishingUI(true);
+        SetInventoryUI(true);
+        isEnable = true;
+    }
+
+    void OnOpenOtherInventory(InventoryData inventory)
+    {
+        SetOtherInventoryUI(true);
+        SetInventoryUI(true);
+        isEnable = true;
+    }
+
+    void OnClose()
+    {
+        SetInventoryUI(false);
+        SetFishingUI(false);
+        SetOtherInventoryUI(false);
+    }
+
     public void SetUI(state ui)
     {
         switch (ui)

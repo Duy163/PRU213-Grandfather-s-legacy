@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -157,11 +158,32 @@ public class InventoryView : MonoBehaviour
         itemUI.Resize(gridLayoutGroup.cellSize.x);
         listItem.Add(new Vector2(x, y), itemUI);
 
+        if (!gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(true);
+        }
+        StartCoroutine(SnapItemAfterLayout(itemUI, x, y));
+    }
+
+    IEnumerator SnapItemAfterLayout(ItemUI itemUI, int x, int y)
+    {
+        // Wait for end of frame để layout system chạy xong
+        yield return new WaitForEndOfFrame();
+
+        // Force rebuild layout
         LayoutRebuilder.ForceRebuildLayoutImmediate(slotFrame);
+        Canvas.ForceUpdateCanvases();
 
+        // Get slot and snap
         var slot = GetSlot(x, y);
-
-        itemUI.SnapToSlot(slot);
+        if (slot != null)
+        {
+            itemUI.SnapToSlot(slot);
+        }
+        else
+        {
+            Debug.LogError($"Slot not found at ({x}, {y})");
+        }
     }
 
     void OnPlaceItem(ItemData itemData, int x, int y)

@@ -42,6 +42,11 @@ public class ItemUI : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void SetRaycast(bool value)
+    {
+        transform.GetComponent<CanvasGroup>().blocksRaycasts = value;
+    }
+
     public void SnapToSlot(DropSlot slot)
     {
         RectTransform slotRect = slot.GetComponent<RectTransform>();

@@ -2,14 +2,24 @@ using UnityEngine;
 
 public class FishingController : MonoBehaviour
 {
+    // ================= CONSTANTS =========================
+
+    // ================= Serialized Fields =================
+
     [SerializeField] TimingBarView timingBarView;
 
     [SerializeField] private InputManager inputManager;
     [SerializeField] private UIManager uiManager;
 
+    // ================= State =============================
+
     private IFishingMinigame vm;
     private ItemData item;
     private bool canFishing = false;
+
+    // ================= Public Properties =================
+
+    // ================= Unity Lifecycle ===================
 
     void Awake()
     {
@@ -18,41 +28,51 @@ public class FishingController : MonoBehaviour
 
     void OnEnable()
     {
-        FishingEvent.OnEnableFishing += HandleEnableFishing;
+        // InputEvent.OnOpenFishingPressed += OnOpenFishing;
+        InputEvent.OnCatchFishPressed += OnCatchFish;
+
+        FishingEvent.OnEnableFishing += OnOpenFishing;
         FishingEvent.OnUnableFishing += HandleUnableFishing;
     }
 
     void OnDisable()
     {
-        FishingEvent.OnEnableFishing -= HandleEnableFishing;
+        // InputEvent.OnOpenFishingPressed -= OnOpenFishing;
+        InputEvent.OnCatchFishPressed -= OnCatchFish;
+
+        FishingEvent.OnEnableFishing -= OnOpenFishing;
         FishingEvent.OnUnableFishing -= HandleUnableFishing;
     }
 
-    void Update()
+    // ================= Input Handling ====================
+
+    void OnOpenFishing(ItemData item)
+    {
+        // if (item == null || !canFishing) return;
+        this.item = item;
+        canFishing = true;
+
+        Init(this.item);
+        inputManager.EnableUIInput(true);
+        vm.Start();
+    }
+
+    void OnCatchFish()
     {
         if (item == null || !canFishing) return;
 
-        if (inputManager.FishPressed())
-        {
-            Init(item);
-            uiManager.SetUI(UIManager.state.Fishing);
-            inputManager.EnableUIInput(true);
-            vm.Start();
-        }
+        if (vm == null) return;
+        bool result = timingBarView.IsSuccess();
+        bool isFinish = vm.Handle(result);
 
-        if (inputManager.CatchFish())
+        if (isFinish)
         {
-            if (vm == null) return;
-            bool result = timingBarView.IsSuccess();
-            bool isFinish = vm.Handle(result);
-
-            if (isFinish)
-            {
-                canFishing = false;
-                InventoryEvent.OnAddItem?.Invoke(item);
-            }
+            canFishing = false;
+            InventoryEvent.OnAddItem?.Invoke(item);
         }
     }
+
+    // ================= Initialization ====================
 
     void Init(ItemData item)
     {
@@ -69,6 +89,8 @@ public class FishingController : MonoBehaviour
                 break;
         }
     }
+
+    // ================= Core Logic ========================
 
     void Clear()
     {
@@ -91,8 +113,20 @@ public class FishingController : MonoBehaviour
         Clear();
     }
 
+    // ================= Subsystem =========================
+
+    // ================= Event Handlers ====================
+
+    // ================= Public API ========================
+
+    // ================= Helpers ===========================
     float CaculatorDificult(ItemData item)
     {
         return Mathf.Clamp01(item.weight / item.MAX_WEIGHT * 0.3f + item.value / item.MAX_VALUE * 0.7f);
     }
+
+    // ================= Debug / Editor ====================
+
+
+
 }

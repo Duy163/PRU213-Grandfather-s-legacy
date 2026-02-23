@@ -5,16 +5,19 @@ public class InventoryViewModel
     private InventoryModel model;
     private InventoryData data;
 
+    private bool isBelongPlayer = false;
+
     public event System.Action<int, int> OnCellChanged;
     public event System.Action<ItemData, int, int, bool> OnAddItem;
     public event System.Action<ItemData, int, int> OnPlaceItem;
     public event System.Action<int, int> OnRemoveItem;
     public event System.Action<int, int> OnDestroyItem;
 
-    public InventoryViewModel(InventoryData data)
+    public InventoryViewModel(InventoryData data, bool isBelongPlayer)
     {
         this.data = data;
         model = new InventoryModel(new Vector2(data.column, data.row));
+        this.isBelongPlayer = isBelongPlayer;
     }
 
     public void Dispose()
@@ -73,29 +76,27 @@ public class InventoryViewModel
     public void AddItem(ItemData itemData)
     {
         Vector2 place = FindPlaceForItem(itemData);
-        if (place == Vector2.negativeInfinity)
+        if (place.Equals(Vector2.negativeInfinity))
+        {
+            Debug.Log($"No place found for item {itemData.itemName}");
             return;
+        }
+
 
         PlaceItem(itemData, (int)place.x, (int)place.y);
-        OnAddItem?.Invoke(itemData, (int)place.x, (int)place.y, true);
+        OnAddItem?.Invoke(itemData, (int)place.x, (int)place.y, isBelongPlayer);
     }
 
     public void AddItemFormList()
     {
         if (model.wasOpen) return;
-
         model.wasOpen = true;
         var listItem = data.items;
         foreach (InventoryItemData item in listItem)
         {
             SetOccupiedSlot(item.itemData, item.position.x, item.position.y, true);
-            OnAddItem?.Invoke(item.itemData, item.position.x, item.position.y, false);
+            OnAddItem?.Invoke(item.itemData, item.position.x, item.position.y, isBelongPlayer);
         }
-    }
-
-    public void RemoveItemFormList()
-    {
-
     }
 
     //===========================PRIVATE========================================

@@ -30,6 +30,8 @@ public class TimingBarView : MonoBehaviour
 
     public void UnBind()
     {
+        if (vm == null) return;
+
         vm.OnStart -= OnStart;
         vm.OnHandle -= OnHandle;
         vm.OnFinish -= OnFinish;

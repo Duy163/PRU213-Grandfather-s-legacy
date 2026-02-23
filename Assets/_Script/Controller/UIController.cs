@@ -29,6 +29,7 @@ public class UIController : MonoBehaviour
     public void StartHoldingItem(ItemUI item)
     {
         itemHolding = item;
+        itemHolding.SetRaycast(false);
         RectTransform rt = item.GetComponent<RectTransform>();
         offset = new Vector2(rt.rect.width / 8, -rt.rect.height / 8);
         rt.SetParent(ItemDragCanvas, false);
@@ -48,6 +49,7 @@ public class UIController : MonoBehaviour
         isHoldingItem = false;
         InventoryEvent.OnDropItem?.Invoke(itemHolding, dropSlot);
         itemHolding.SnapToSlot(dropSlot);
+        itemHolding.SetRaycast(true);
 
         itemHolding = null;
     }
