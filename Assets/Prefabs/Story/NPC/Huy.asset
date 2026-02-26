@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74b26a43ee0ae3d40b7bd9be304ed915, type: 3}
+  m_Name: Huy
+  m_EditorClassIdentifier: Assembly-CSharp::NPCData
+  npcID: Huy
+  displayName: Huy
+  dialoguePool:
+  - dialogue: {fileID: 11400000, guid: 6272fdcab81cf7a41bdc7f4f77642ab8, type: 2}
+    priority: 0
+    oneTimeOnly: 0
+    conditions: []
+    editorNote: 

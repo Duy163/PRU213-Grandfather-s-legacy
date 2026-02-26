@@ -21,19 +21,12 @@ public class ShipController : MonoBehaviour
 
     // ================= Unity Lifecycle ===================
 
-    void OnEnable()
-    {
-
-    }
-
-    void OnDisable()
-    {
-
-    }
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0, -0.5f, 0);
+        // rb.constraints = RigidbodyConstraints.FreezeRotationX
+        //        | RigidbodyConstraints.FreezeRotationZ;
 
         LoadShipData();
     }

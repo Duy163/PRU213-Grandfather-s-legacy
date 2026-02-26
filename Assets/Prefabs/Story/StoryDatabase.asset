@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StoryDatabase
   allTriggers:
   - {fileID: 11400000, guid: 102699fa58c54e740876b72fb0a9b0fa, type: 2}
-  allNPCs: []
-  allDialogues: []
+  allNPCs:
+  - {fileID: 11400000, guid: 1acb71f97dfd57e4a9a32d5a1ae3efd3, type: 2}
+  - {fileID: 11400000, guid: 0d749a1912ec0a345a477d6f2051ba45, type: 2}
+  - {fileID: 11400000, guid: f6e652d5164280d429b8907e37d65376, type: 2}
+  - {fileID: 11400000, guid: 394a786331365fd4381372db0601e46b, type: 2}
+  allDialogues:
+  - {fileID: 11400000, guid: 2b28bccf12869444397b257edd270019, type: 2}
+  - {fileID: 11400000, guid: 6272fdcab81cf7a41bdc7f4f77642ab8, type: 2}
+  - {fileID: 11400000, guid: 2ee66c804674e494d94cdce01ed5a214, type: 2}
+  - {fileID: 11400000, guid: 829ba356c8937e744815cf09e3993ff3, type: 2}
