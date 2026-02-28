@@ -9,5 +9,5 @@ public class StoryDatabase : ScriptableObject
     // Tuần 3 sẽ dùng tiếp
     public List<NPCData> allNPCs;
     public List<DialogueData> allDialogues;
-    // public List<QuestData> allQuests;
+    public List<QuestData> allQuests;
 }

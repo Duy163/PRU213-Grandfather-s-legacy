@@ -3,11 +3,12 @@
 [System.Serializable]
 public class GameData
 {
-    public PlayerShipData playerShipData;
-    public InventoryData inventoryData;
-    public ProgressionData progressionData;
-    public WorldData worldData;
-    public EconomyData economyData;
+    public PlayerShipData playerShipData = new PlayerShipData();
+    public InventoryData inventoryData = new InventoryData();
+    public EconomyData economyData = new EconomyData();
+    public WorldData worldData = new WorldData();
+    public ProgressionData progressionData = new ProgressionData();
+    public WorldStateSaveData worldStateSaveData = new WorldStateSaveData();
 
 
     public GameData()
@@ -17,5 +18,6 @@ public class GameData
         progressionData = new ProgressionData();
         worldData = new WorldData();
         economyData = new EconomyData();
+        worldStateSaveData = new WorldStateSaveData();
     }
 }

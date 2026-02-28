@@ -8,7 +8,6 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject OtherInventoryUI;
     [SerializeField] private GameObject TalkUI;
 
-    private bool isEnable = false;
 
     public enum state
     {
@@ -39,27 +38,27 @@ public class UIManager : Singleton<UIManager>
     void OnOpenInventory()
     {
         SetInventoryUI(true);
-        isEnable = true;
+
     }
 
     void OnOpenFishing(ItemData item)
     {
         SetFishingUI(true);
         SetInventoryUI(true);
-        isEnable = true;
+
     }
 
     public void OnOpenOtherInventory(InventoryData inventory)
     {
         SetOtherInventoryUI(true);
         SetInventoryUI(true);
-        isEnable = true;
+
     }
 
     public void OnOpenTalk(NPCData data, StoryDatabase database)
     {
         SetTalkUI(true);
-        isEnable = true;
+
     }
 
     void OnClose()

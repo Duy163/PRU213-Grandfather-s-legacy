@@ -27,23 +27,6 @@ public class InventoryViewModel
         OnPlaceItem = null;
     }
 
-    public void PlaceItem(ItemData itemData, int x, int y)
-    {
-        var item = new InventoryItemData(itemData, new Vector2Int(x, y));
-        data.items.Add(item);
-
-        SetOccupiedSlot(itemData, x, y, true);
-
-    }
-
-    public void RemoveItem(ItemData itemData, int x, int y)
-    {
-        var item = data.items.Find(i => i.position == new Vector2(x, y));
-        SetOccupiedSlot(itemData, item.position.x, item.position.y, false);
-        data.items.Remove(item);
-        OnRemoveItem?.Invoke(x, y);
-    }
-
     public bool CanPlace(ItemData itemData, int startX, int startY)
     {
         var shape = itemData.itemShape;
@@ -73,6 +56,17 @@ public class InventoryViewModel
         return new Vector2(data.column, data.row);
     }
 
+    public int GetItemCount(string id)
+    {
+        int count = 0;
+        foreach (var item in data.items)
+        {
+            if (item.itemData.itemId == id)
+                count++;
+        }
+        return count;
+    }
+
     public void AddItem(ItemData itemData)
     {
         Vector2 place = FindPlaceForItem(itemData);
@@ -87,6 +81,23 @@ public class InventoryViewModel
         OnAddItem?.Invoke(itemData, (int)place.x, (int)place.y, isBelongPlayer);
     }
 
+    public void PlaceItem(ItemData itemData, int x, int y)
+    {
+        var item = new InventoryItemData(itemData, new Vector2Int(x, y));
+        data.items.Add(item);
+
+        SetOccupiedSlot(itemData, x, y, true);
+
+    }
+
+    public void RemoveItem(ItemData itemData, int x, int y)
+    {
+        var item = data.items.Find(i => i.position == new Vector2(x, y));
+        SetOccupiedSlot(itemData, item.position.x, item.position.y, false);
+        data.items.Remove(item);
+        OnRemoveItem?.Invoke(x, y);
+    }
+
     public void AddItemFormList()
     {
         if (model.wasOpen) return;
@@ -99,6 +110,39 @@ public class InventoryViewModel
         }
     }
 
+    public void DestroyItem(int x, int y)
+    {
+        var item = data.items.Find(i => i.position == new Vector2(x, y));
+        if (item == null) return;
+
+        SetOccupiedSlot(item.itemData, item.position.x, item.position.y, false);
+        data.items.Remove(item);
+        OnDestroyItem?.Invoke(x, y);
+    }
+
+    public void DestroyItem(string itemID)
+    {
+        var item = data.items.Find(i => i.itemData.itemId == itemID);
+        if (item == null) return;
+
+        SetOccupiedSlot(item.itemData, item.position.x, item.position.y, false);
+        data.items.Remove(item);
+        OnDestroyItem?.Invoke(item.position.x, item.position.y);
+    }
+
+    public void DestroyListItem(string itemID, int amount)
+    {
+        if (GetItemCount(itemID) < amount)
+        {
+            Debug.Log($"[InventoryViewModel] Không đủ item {itemID} để destroy. Yêu cầu: {amount}, có: {GetItemCount(itemID)}");
+            return;
+        }
+
+        for (int i = 0; i < amount; i++)
+        {
+            DestroyItem(itemID);
+        }
+    }
     //===========================PRIVATE========================================
 
     Vector2 FindPlaceForItem(ItemData itemData)

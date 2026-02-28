@@ -18,6 +18,7 @@ public class InputManager : Singleton<InputManager>
     private InputAction m_RotateItemAction;
     private InputAction m_RemoveItemAction;
     private InputAction m_RightClickAction;
+    private InputAction m_NextDialogue;
 
     // ================= Public Properties =================
     public InputActionAsset inputActions;
@@ -67,6 +68,7 @@ public class InputManager : Singleton<InputManager>
         m_RotateItemAction = InputSystem.actions.FindAction("RotateItem");
         m_RemoveItemAction = InputSystem.actions.FindAction("RemoveItem");
         m_RightClickAction = InputSystem.actions.FindAction("RightClick");
+        m_NextDialogue = InputSystem.actions.FindAction("NextDialogue");
     }
 
     void SubscribeToInputSystem()
@@ -85,7 +87,8 @@ public class InputManager : Singleton<InputManager>
         m_CloseInventoryAction.performed += ctx => InputEvent.TriggerCloseInventory();
         m_RotateItemAction.performed += ctx => InputEvent.TriggerRotateItem();
         m_RemoveItemAction.performed += ctx => InputEvent.TriggerRemoveItem();
-        m_RightClickAction.performed += ctx => InputEvent.TriggerRightClick();
+        m_RightClickAction.started += ctx => InputEvent.TriggerRightClick();
+        m_NextDialogue.performed += ctx => InputEvent.TriggerNextDialogue();
     }
 
     // ================= Subsystem =========================

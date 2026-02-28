@@ -50,6 +50,16 @@ public abstract class BaseInventoryController : MonoBehaviour
         viewModel.AddItem(item);
     }
 
+    public int CountItem(string itemID)
+    {
+        return viewModel.GetItemCount(itemID);
+    }
+
+    public void DestroyListItem(string itemID, int amount)
+    {
+        viewModel.DestroyListItem(itemID, amount);
+    }
+
     protected abstract bool IsPlayerInventory();
 
     public virtual void Dispose()

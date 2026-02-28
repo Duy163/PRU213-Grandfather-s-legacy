@@ -10,12 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0184bb0e6d60d664fb460ef3950717ee, type: 3}
-  m_Name: TuanDialogue
+  m_Name: duy_begin
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
-  dialogueID: tuan_begin
+  dialogueID: duy_begin
   lines:
-  - speakerName: Tuan
-    text: an oc ko cu
-    portrait: {fileID: 21300000, guid: 7a8ea276f119e07418af65523866f3d7, type: 3}
+  - speakerName: Duy
+    text: uhm
+    portrait: {fileID: 21300000, guid: ac69cb07e8694a240812a39b74b2330b, type: 3}
     setFlagAfter: 
+    triggerQuestID: 
+  - speakerName: Duy
+    text: di danh bida ko
+    portrait: {fileID: 21300000, guid: ac69cb07e8694a240812a39b74b2330b, type: 3}
+    setFlagAfter: met_duy
     triggerQuestID: 

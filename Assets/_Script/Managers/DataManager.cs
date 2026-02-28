@@ -4,141 +4,86 @@ using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
-    public GameData currentGameData;
+    public GameData currentGameData { get; private set; }
+    public WorldStateManager WorldState { get; private set; }
 
-    [SerializeField] private ItemData fish;
+    private string savePath => Path.Combine(Application.persistentDataPath, "savegame.json");
 
-    private string saveFilePath;
-    private const string SAVE_FILE_NAME = "savegame.json";
+    // Shortcut cho các manager khác dùng
+    public ProgressionData Progression => currentGameData.progressionData;
 
     protected override void Awake()
     {
         base.Awake();
-        InitializeDataManager();
+        Load();
     }
 
-    private void InitializeDataManager()
-    {
-        saveFilePath = Path.Combine(Application.persistentDataPath, SAVE_FILE_NAME);
-        Debug.Log("Save file path: " + saveFilePath);
+    // ══════════════════════════════════════════════════
+    //  SAVE / LOAD / DELETE
+    // ══════════════════════════════════════════════════
 
-        // Load existing data or create new
-        if (SaveFileExists())
-        {
-            LoadGame();
-        }
-        else
-        {
-            CreateNewGame();
-        }
-    }
-
-    // ============ SAVE FUNCTIONS ============
-
-    public void SaveGame()
+    public void Save()
     {
         try
         {
-            string json = JsonUtility.ToJson(currentGameData, true);
+            // Ghi WorldState vào GameData trước khi serialize
+            currentGameData.worldStateSaveData = WorldState.ToSaveData();
 
-            // Optional: Simple encryption (XOR)
-            // string encryptedJson = EncryptDecrypt(json);
-
-            File.WriteAllText(saveFilePath, json);
-            Debug.Log("Game saved successfully!");
+            string json = JsonUtility.ToJson(currentGameData, prettyPrint: true);
+            File.WriteAllText(savePath, json);
+            Debug.Log("[DataManager] Saved.");
         }
         catch (Exception e)
         {
-            Debug.LogError("Failed to save game: " + e.Message);
+            Debug.LogError("[DataManager] Save failed: " + e.Message);
         }
     }
 
-    public void SaveGameAsync()
+    public void Load()
     {
-        // For auto-save without freezing game
-        System.Threading.Tasks.Task.Run(() => SaveGame());
-    }
+        WorldState = new WorldStateManager();
 
-    // ============ LOAD FUNCTIONS ============
-
-    public void LoadGame()
-    {
         try
         {
-            if (SaveFileExists())
+            if (File.Exists(savePath))
             {
-                string json = File.ReadAllText(saveFilePath);
-
-                // Optional: Decrypt if encrypted
-                // string decryptedJson = EncryptDecrypt(json);
-
+                string json = File.ReadAllText(savePath);
                 currentGameData = JsonUtility.FromJson<GameData>(json);
-                Debug.Log("Game loaded successfully!");
+                WorldState.FromSaveData(currentGameData.worldStateSaveData);
+                Debug.Log("[DataManager] Loaded existing save.");
             }
             else
             {
-                Debug.LogWarning("Save file not found. Creating new game.");
                 CreateNewGame();
             }
         }
         catch (Exception e)
         {
-            Debug.LogError("Failed to load game: " + e.Message);
+            Debug.LogError("[DataManager] Load failed: " + e.Message);
             CreateNewGame();
         }
     }
-
-    // ============ NEW GAME ============
 
     public void CreateNewGame()
     {
         currentGameData = new GameData();
-
-        debug(currentGameData);
-        Debug.Log("New game created!");
+        WorldState = new WorldStateManager();
+        Debug.Log("[DataManager] New game created.");
     }
 
-    void debug(GameData temp)
+    public void DeleteSave()
     {
-        InventoryItemData fish = new InventoryItemData(this.fish, new Vector2Int(3, 4));
+        if (File.Exists(savePath))
+            File.Delete(savePath);
 
-        temp.inventoryData.AddListItem(fish);
+        CreateNewGame();
+        Debug.Log("[DataManager] Save deleted.");
     }
 
-    // ============ UTILITY FUNCTIONS ============
+    // ══════════════════════════════════════════════════
+    //  SHIP
+    // ══════════════════════════════════════════════════
 
-    public bool SaveFileExists()
-    {
-        return File.Exists(saveFilePath);
-    }
-
-    public void DeleteSaveFile()
-    {
-        if (SaveFileExists())
-        {
-            File.Delete(saveFilePath);
-            Debug.Log("Save file deleted!");
-            CreateNewGame();
-        }
-    }
-
-    // Simple XOR encryption (optional)
-    private string EncryptDecrypt(string data)
-    {
-        string key = "YourSecretKey123"; // Change this!
-        char[] output = new char[data.Length];
-
-        for (int i = 0; i < data.Length; i++)
-        {
-            output[i] = (char)(data[i] ^ key[i % key.Length]);
-        }
-
-        return new string(output);
-    }
-
-    // ============ QUICK ACCESS FUNCTIONS ============
-
-    // Ship
     public void UpdateShipPosition(Vector3 position, Quaternion rotation)
     {
         currentGameData.playerShipData.position = position;
@@ -150,18 +95,24 @@ public class DataManager : Singleton<DataManager>
         currentGameData.playerShipData.panicLevel = Mathf.Clamp(level, 0f, 100f);
     }
 
-    // Inventory
+    // ══════════════════════════════════════════════════
+    //  INVENTORY
+    // ══════════════════════════════════════════════════
+
     public void AddItemToInventory(InventoryItemData item)
     {
         currentGameData.inventoryData.items.Add(item);
     }
 
-    public void RemoveItemFromInventory(string itemID)
-    {
-        // currentGameData.inventoryData.items.RemoveAll(x => x.itemID == itemID);
-    }
+    // public void RemoveItemFromInventory(string itemID)
+    // {
+    //     currentGameData.inventoryData.items.RemoveAll(x => x.itemID == itemID);
+    // }
 
-    // Economy
+    // ══════════════════════════════════════════════════
+    //  ECONOMY
+    // ══════════════════════════════════════════════════
+
     public bool SpendMoney(float amount)
     {
         if (currentGameData.economyData.currentMoney >= amount)
@@ -169,6 +120,8 @@ public class DataManager : Singleton<DataManager>
             currentGameData.economyData.currentMoney -= amount;
             return true;
         }
+
+        Debug.Log("[DataManager] Không đủ tiền.");
         return false;
     }
 
@@ -177,45 +130,50 @@ public class DataManager : Singleton<DataManager>
         currentGameData.economyData.currentMoney += amount;
     }
 
-    // World
-    public void DiscoverFishingSpot(FishingSpot spot)
-    {
-        spot.isDiscovered = true;
-        if (!currentGameData.worldData.discoveredFishingSpots.Contains(spot))
-        {
-            currentGameData.worldData.discoveredFishingSpots.Add(spot);
-        }
-    }
+    // ══════════════════════════════════════════════════
+    //  WORLD
+    // ══════════════════════════════════════════════════
 
     public void AdvanceTime(float hours)
     {
         currentGameData.worldData.gameTime += hours;
 
-        // Check if new day
         if (currentGameData.worldData.gameTime >= 24f)
         {
             currentGameData.worldData.gameTime -= 24f;
             currentGameData.worldData.currentDay++;
         }
 
-        // Update day/night
         currentGameData.worldData.isNight =
             currentGameData.worldData.gameTime >= 18f ||
             currentGameData.worldData.gameTime < 6f;
     }
 
-    // Progression
-    public void CompleteQuest(string questID)
+    public void DiscoverFishingSpot(FishingSpot spot)
     {
-        currentGameData.progressionData.completedQuests.Add(questID);
-        currentGameData.progressionData.activeQuests.RemoveAll(x => x.questID == questID);
+        spot.isDiscovered = true;
+        if (!currentGameData.worldData.discoveredFishingSpots.Contains(spot))
+            currentGameData.worldData.discoveredFishingSpots.Add(spot);
     }
 
     public void UnlockArea(string areaID)
     {
-        if (!currentGameData.progressionData.unlockedAreas.Contains(areaID))
+        if (!Progression.unlockedAreas.Contains(areaID))
         {
-            currentGameData.progressionData.unlockedAreas.Add(areaID);
+            Progression.unlockedAreas.Add(areaID);
+        }
+    }
+
+    // ══════════════════════════════════════════════════
+    //  PROGRESSION
+    // ══════════════════════════════════════════════════
+
+    public void DiscoverSpecies(string speciesID)
+    {
+        if (!Progression.discoveredSpecies.Contains(speciesID))
+        {
+            Progression.discoveredSpecies.Add(speciesID);
+            WorldState.Increment("species_discovered");
         }
     }
 }

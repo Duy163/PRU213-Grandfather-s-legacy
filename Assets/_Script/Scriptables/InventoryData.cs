@@ -32,6 +32,7 @@ public class InventoryData
 public class InventoryItemData
 {
     public ItemData itemData;
+    public string itemID => itemData.itemId;
     public Vector2Int position;
 
     public InventoryItemData(ItemData item, Vector2Int pos)

@@ -7,7 +7,7 @@ public enum ConditionType
     ValueEquals,          // value == x
     QuestCompleted,       // quest đã xong
     QuestActive,          // quest đang làm
-    SpeciesDiscovered,    // đã gặp loài này
+    QuestStepActive,    // step của quest đang làm
     AreaUnlocked,         // đã đến vùng này
 }
 

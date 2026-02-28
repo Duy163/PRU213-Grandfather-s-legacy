@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9571aa32ffb61574c9def41ee05e01d1, type: 3}
   m_Name: StoryDatabase
   m_EditorClassIdentifier: Assembly-CSharp::StoryDatabase
-  allTriggers:
-  - {fileID: 11400000, guid: 102699fa58c54e740876b72fb0a9b0fa, type: 2}
+  allTriggers: []
   allNPCs:
   - {fileID: 11400000, guid: 1acb71f97dfd57e4a9a32d5a1ae3efd3, type: 2}
   - {fileID: 11400000, guid: 0d749a1912ec0a345a477d6f2051ba45, type: 2}
@@ -24,3 +23,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6272fdcab81cf7a41bdc7f4f77642ab8, type: 2}
   - {fileID: 11400000, guid: 2ee66c804674e494d94cdce01ed5a214, type: 2}
   - {fileID: 11400000, guid: 829ba356c8937e744815cf09e3993ff3, type: 2}
+  - {fileID: 11400000, guid: 84ab6bb0de2792647afa1d7c78dd7c36, type: 2}
+  - {fileID: 11400000, guid: 9c304184bf91f4d43a244f07355ac524, type: 2}
+  - {fileID: 11400000, guid: fb130b9a17d62e64e8e6fac7946b0401, type: 2}
+  - {fileID: 11400000, guid: 69618fa8389d4e24585b27ce308a9102, type: 2}
+  - {fileID: 11400000, guid: 86551c238f89fc14a8895df18db53212, type: 2}
+  - {fileID: 11400000, guid: 131e13e13a287674d8086da1c85928c4, type: 2}
+  allQuests:
+  - {fileID: 11400000, guid: 4ba329a4f6957eb4b85885a419853960, type: 2}
+  - {fileID: 11400000, guid: 61f6bb3c4dd5a0944b3705dd500ca146, type: 2}

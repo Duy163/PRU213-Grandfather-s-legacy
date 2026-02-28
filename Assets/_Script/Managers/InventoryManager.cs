@@ -1,12 +1,17 @@
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : Singleton<InventoryManager>
 {
     [Header("Controllers")]
     [SerializeField] private PlayerInventoryController playerController;
     [SerializeField] private OtherInventoryController otherController;
 
     private bool hasOtherInventory = false;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     void Start()
     {
@@ -59,10 +64,15 @@ public class InventoryManager : MonoBehaviour
     {
         InputManager.Instance.EnableUIInput(false);
     }
-
-    void OnInteractPressed()
+    // ============= Public =============
+    public int CountItemInPlayerInventory(string itemID)
     {
+        return playerController.CountItem(itemID);
+    }
 
+    public void DestroyListItemInPlayerInventory(string itemID, int amount)
+    {
+        playerController.DestroyListItem(itemID, amount);
     }
 
     // ============= Event Routing =============
@@ -70,12 +80,14 @@ public class InventoryManager : MonoBehaviour
     {
         GetController(item.isBelongPlayer).PickItem(item);
         SetAllRaycast(false);
+        DataManager.Instance.Save();
     }
 
     void HandleDropItem(ItemUI item, DropSlot dropSlot)
     {
         GetController(dropSlot.isBelongPlayer).DropItem(item, dropSlot);
         SetAllRaycast(true);
+        DataManager.Instance.Save();
     }
 
     bool HandleCanPlace(ItemUI item, DropSlot dropSlot)
@@ -103,6 +115,7 @@ public class InventoryManager : MonoBehaviour
     void HandleAddItem(ItemData item)
     {
         playerController.AddItem(item);
+        DataManager.Instance.Save();
     }
 
     // ============= Helpers =============

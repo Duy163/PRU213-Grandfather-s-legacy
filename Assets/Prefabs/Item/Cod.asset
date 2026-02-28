@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17063d482f6119c4d8dead8046dcb07c, type: 3}
   m_Name: Cod
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: 1
+  itemId: cod
   itemName: Cod
   description: 
   icon: {fileID: 21300000, guid: 2ad0cd8c8c7e74d44b7dcd9f11989038, type: 3}
@@ -23,3 +23,4 @@ MonoBehaviour:
   MAX_VALUE: 1000
   fishType: 0
   itemType: 0
+  minigameType: 0

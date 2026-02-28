@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17063d482f6119c4d8dead8046dcb07c, type: 3}
   m_Name: Mackerel
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: 
-  itemName: 
+  itemId: mackerel
+  itemName: Mackerel
   description: 
   icon: {fileID: 21300000, guid: 685e8730b07c35346afa35f7f2966888, type: 3}
   itemShape: {fileID: 11400000, guid: f125674eda3f65c479feb02afd962066, type: 2}

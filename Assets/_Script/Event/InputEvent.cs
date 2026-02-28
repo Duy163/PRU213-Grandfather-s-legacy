@@ -18,6 +18,7 @@ public static class InputEvent
     public static event Action OnRotateItemPressed;
     public static event Action OnRemoveItemPressed;
     public static event Action OnRightClickPressed;
+    public static event Action OnNextDialoguePressed;
 
 
     internal static void TriggerMove(Vector2 movement) => OnMove?.Invoke(movement);
@@ -38,4 +39,5 @@ public static class InputEvent
     internal static void TriggerRotateItem() => OnRotateItemPressed?.Invoke();
     internal static void TriggerRemoveItem() => OnRemoveItemPressed?.Invoke();
     internal static void TriggerRightClick() => OnRightClickPressed?.Invoke();
+    internal static void TriggerNextDialogue() => OnNextDialoguePressed?.Invoke();
 }

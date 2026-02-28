@@ -12,11 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b26a43ee0ae3d40b7bd9be304ed915, type: 3}
   m_Name: Duy
   m_EditorClassIdentifier: Assembly-CSharp::NPCData
-  npcID: Duy
+  npcID: duy
   displayName: Duy
   dialoguePool:
   - dialogue: {fileID: 11400000, guid: 2ee66c804674e494d94cdce01ed5a214, type: 2}
+    priority: 1
+    oneTimeOnly: 1
+    conditions: []
+    editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 84ab6bb0de2792647afa1d7c78dd7c36, type: 2}
     priority: 0
     oneTimeOnly: 0
     conditions: []
     editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0

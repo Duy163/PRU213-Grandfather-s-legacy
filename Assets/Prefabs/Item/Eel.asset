@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17063d482f6119c4d8dead8046dcb07c, type: 3}
   m_Name: Eel
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: 
+  itemId: eel
   itemName: Eel
   description: 
   icon: {fileID: 21300000, guid: c87196f93a445164ead01fa203182a14, type: 3}

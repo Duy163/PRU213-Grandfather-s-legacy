@@ -562,7 +562,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "15cef263-9014-4fd5-94d9-4e4a6234a6ef",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -661,6 +661,15 @@
                     "name": "RotateItem",
                     "type": "Button",
                     "id": "9301ff14-1295-48f8-a475-8c944e9abfd8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextDialogue",
+                    "type": "Button",
+                    "id": "285acc85-6909-46db-afae-ae50f9043861",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -1127,6 +1136,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "RotateItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2617c9f8-d0c8-4c5d-bf8d-8d7dfa0c5e48",
+                    "path": "<Keyboard>/Space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "NextDialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

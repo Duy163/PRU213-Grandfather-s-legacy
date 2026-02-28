@@ -16,5 +16,5 @@ MonoBehaviour:
   editorNote: 
   conditions: []
   action: 4
-  targetID: world_knows_aberration
+  targetID: 
   extraData: 

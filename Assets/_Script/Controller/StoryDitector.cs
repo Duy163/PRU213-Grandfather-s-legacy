@@ -1,38 +1,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoryDirector : MonoBehaviour
+public class StoryDirector : Singleton<StoryDirector>
 {
-    public static StoryDirector Instance;
-
     [SerializeField] private StoryDatabase database;
 
-    private ProgressionData progression => SaveManager.Instance.Progression;
-    private WorldStateManager worldState => SaveManager.Instance.WorldState;
+    private ProgressionData progression => DataManager.Instance.Progression;
+    private WorldStateManager worldState => DataManager.Instance.WorldState;
 
-    void Awake()
+    protected override void Awake()
     {
-        if (Instance != null) { Destroy(gameObject); return; }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
+        if (database == null)
+            Debug.LogError("StoryDirector: No StoryDatabase assigned!");
     }
 
     // ── GỌI SAU MỖI HÀNH ĐỘNG CỦA PLAYER ─────────────
-    public void Evaluate()
-    {
-        foreach (var trigger in database.allTriggers)
-        {
-            // Bỏ qua nếu đã bắn rồi
-            if (worldState.GetFlag($"trigger_fired_{trigger.triggerID}"))
-                continue;
+    // public void Evaluate()
+    // {
+    //     foreach (var trigger in database.allTriggers)
+    //     {
+    //         // Bỏ qua nếu đã bắn rồi
+    //         if (worldState.GetFlag($"trigger_fired_{trigger.triggerID}"))
+    //             continue;
 
-            // Kiểm tra tất cả điều kiện
-            if (!CheckConditions(trigger.conditions))
-                continue;
+    //         // Kiểm tra tất cả điều kiện
+    //         if (!CheckConditions(trigger.conditions))
+    //             continue;
 
-            FireTrigger(trigger);
-        }
-    }
+    //         FireTrigger(trigger);
+    //     }
+    // }
 
     // ── KIỂM TRA ĐIỀU KIỆN ────────────────────────────
     public bool CheckConditions(List<StoryCondition> conditions)
@@ -66,8 +64,9 @@ public class StoryDirector : MonoBehaviour
                         return false;
                     break;
 
-                case ConditionType.SpeciesDiscovered:
-                    if (!progression.discoveredSpecies.Contains(c.key)) return false;
+                case ConditionType.QuestStepActive:
+                    var quest = progression.activeQuests.Find(q => q.questID == c.key);
+                    if (quest == null || quest.currentStep != c.value) return false;
                     break;
 
                 case ConditionType.AreaUnlocked:
@@ -79,40 +78,40 @@ public class StoryDirector : MonoBehaviour
     }
 
     // ── BẮN TRIGGER ───────────────────────────────────
-    private void FireTrigger(StoryTriggerData trigger)
-    {
-        // Đánh dấu đã bắn — không bao giờ bắn lại
-        worldState.SetFlag($"trigger_fired_{trigger.triggerID}", true);
+    // private void FireTrigger(StoryTriggerData trigger)
+    // {
+    //     // Đánh dấu đã bắn — không bao giờ bắn lại
+    //     worldState.SetFlag($"trigger_fired_{trigger.triggerID}", true);
 
-        Debug.Log($"[StoryDirector] Fired: {trigger.triggerID}");
+    //     Debug.Log($"[StoryDirector] Fired: {trigger.triggerID}");
 
-        switch (trigger.action)
-        {
-            case TriggerAction.StartQuest:
-                // QuestManager.Instance.TryStartQuest(trigger.targetID);
-                break;
+    //     switch (trigger.action)
+    //     {
+    //         case TriggerAction.StartQuest:
+    //             // QuestManager.Instance.TryStartQuest(trigger.targetID);
+    //             break;
 
-            case TriggerAction.QueueNPCDialogue:
-                NPCManager.Instance.QueueDialogue(trigger.targetID, trigger.extraData);
-                break;
+    //         case TriggerAction.QueueNPCDialogue:
+    //             NPCManager.Instance.QueueDialogue(trigger.targetID, trigger.extraData);
+    //             break;
 
-            case TriggerAction.RevealMapArea:
-                progression.unlockedAreas.Add(trigger.targetID);
-                break;
+    //         case TriggerAction.RevealMapArea:
+    //             progression.unlockedAreas.Add(trigger.targetID);
+    //             break;
 
-            case TriggerAction.SetFlag:
-                worldState.SetFlag(trigger.targetID, true);
-                break;
+    //         case TriggerAction.SetFlag:
+    //             worldState.SetFlag(trigger.targetID, true);
+    //             break;
 
-            case TriggerAction.IncrementValue:
-                worldState.Increment(trigger.targetID);
-                break;
+    //         case TriggerAction.IncrementValue:
+    //             worldState.Increment(trigger.targetID);
+    //             break;
 
-            case TriggerAction.UnlockEncyclopediaEntry:
-                progression.encyclopediaEntries++;
-                break;
-        }
+    //         case TriggerAction.UnlockEncyclopediaEntry:
+    //             progression.encyclopediaEntries++;
+    //             break;
+    //     }
 
-        SaveManager.Instance.Save();
-    }
+    //     SaveManager.Instance.Save();
+    // }
 }

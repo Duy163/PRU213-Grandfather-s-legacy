@@ -1,38 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : Singleton<DialogueManager>
 {
-    public static DialogueManager Instance;
 
     [Header("UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI speakerText;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Image portraitImage;
-    // [SerializeField] private GameObject continuePrompt; // "Nhấn Space để tiếp"
+    [SerializeField] private GameObject continuePrompt; // "Nhấn Space để tiếp"
 
     private DialogueData current;
     private int lineIndex;
     private bool isPlaying;
 
-    void Awake()
+    protected override void Awake()
     {
-        if (Instance != null) { Destroy(gameObject); return; }
-        Instance = this;
+        base.Awake();
     }
 
     void OnEnable()
     {
-        InputEvent.OnRightClickPressed += OnNextLine;
+        InputEvent.OnNextDialoguePressed += OnNextLine;
     }
 
     void OnDisable()
     {
-        InputEvent.OnRightClickPressed -= OnNextLine;
+        InputEvent.OnNextDialoguePressed -= OnNextLine;
     }
 
     void OnNextLine()
@@ -51,6 +47,7 @@ public class DialogueManager : MonoBehaviour
         lineIndex = 0;
         isPlaying = true;
 
+
         ShowLine();
     }
 
@@ -68,7 +65,8 @@ public class DialogueManager : MonoBehaviour
             portraitImage.enabled = line.portrait != null;
         }
 
-        // continuePrompt.SetActive(true);
+        bool hasNextLine = lineIndex < current.lines.Count - 1;
+        continuePrompt.SetActive(hasNextLine);
     }
 
     // ── SANG DÒNG TIẾP THEO ────────────────────────────
@@ -90,12 +88,11 @@ public class DialogueManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(line.setFlagAfter))
         {
-            SaveManager.Instance.WorldState.SetFlag(line.setFlagAfter, true);
-            StoryDirector.Instance.Evaluate(); // kiểm tra trigger mới
+            DataManager.Instance.WorldState.SetFlag(line.setFlagAfter, true);
         }
 
-        // if (!string.IsNullOrEmpty(line.triggerQuestID))
-        //     QuestManager.Instance.TryStartQuest(line.triggerQuestID);
+        if (!string.IsNullOrEmpty(line.triggerQuestID))
+            QuestManager.Instance.TryStartQuest(line.triggerQuestID);
     }
 
     // ── KẾT THÚC DIALOGUE ─────────────────────────────
@@ -105,8 +102,7 @@ public class DialogueManager : MonoBehaviour
         current = null;
         lineIndex = 0;
 
-
-        StoryDirector.Instance.Evaluate(); // đánh giá lại sau khi nói xong
-        SaveManager.Instance.Save();
+        continuePrompt.SetActive(false);
+        DataManager.Instance.Save();
     }
 }

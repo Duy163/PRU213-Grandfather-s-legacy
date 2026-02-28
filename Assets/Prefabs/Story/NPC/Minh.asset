@@ -12,11 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b26a43ee0ae3d40b7bd9be304ed915, type: 3}
   m_Name: Minh
   m_EditorClassIdentifier: Assembly-CSharp::NPCData
-  npcID: collector
+  npcID: minh
   displayName: Minh
   dialoguePool:
   - dialogue: {fileID: 11400000, guid: 2b28bccf12869444397b257edd270019, type: 2}
+    priority: 1
+    oneTimeOnly: 1
+    conditions: []
+    editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: fb130b9a17d62e64e8e6fac7946b0401, type: 2}
     priority: 0
     oneTimeOnly: 0
     conditions: []
     editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 86551c238f89fc14a8895df18db53212, type: 2}
+    priority: 10
+    oneTimeOnly: 0
+    conditions:
+    - type: 6
+      key: minh_spend_money
+      value: 0
+    editorNote: 
+    checkType: 2
+    checkQuestID: minh_spend_money
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 131e13e13a287674d8086da1c85928c4, type: 2}
+    priority: 10
+    oneTimeOnly: 0
+    conditions:
+    - type: 6
+      key: minh_spend_money
+      value: 0
+    editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0
