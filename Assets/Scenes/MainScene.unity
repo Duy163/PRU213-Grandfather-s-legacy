@@ -14365,7 +14365,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1513490934}
   - component: {fileID: 1513490936}
-  - component: {fileID: 1513490937}
   - component: {fileID: 1513490940}
   - component: {fileID: 1513490939}
   m_Layer: 0
@@ -14405,19 +14404,6 @@ MonoBehaviour:
   ItemDragCanvas: {fileID: 1358430856}
   isHoldingItem: 0
   itemHolding: {fileID: 0}
---- !u!114 &1513490937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513490933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca530a03824099c4ea11e0a1a40a6340, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FishingController
-  timingBarView: {fileID: 980061487}
 --- !u!114 &1513490939
 MonoBehaviour:
   m_ObjectHideFlags: 0
