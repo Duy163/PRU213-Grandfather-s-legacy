@@ -134,8 +134,8 @@ Material:
     - _Bottom: {r: 0.5943396, g: 0.9062363, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0.66165704, g: 0.7919847, b: 0.9245261, a: 1}
-    - _SkyTint: {r: 0.7207784, g: 0.8500899, b: 0.973128, a: 1}
+    - _GroundColor: {r: 0.6167216, g: 0.8165904, b: 1, a: 1}
+    - _SkyTint: {r: 0.68518007, g: 0.84957737, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Top: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -22,14 +22,11 @@ public class CameraManager : Singleton<CameraManager>
     void OnEnable()
     {
         CameraEvent.OnFocusIslandCamera += EnterIslandView;
-
-        FishingEvent.OnEnableFishing += EnterFishingView;
-        FishingEvent.OnUnableFishing += ExitView;
     }
 
     // ================= PUBLIC API =================
 
-    public void EnterFishingView(ItemData itemData)
+    public void EnterFishingView()
     {
         fishingCamera.Priority = 20;
         defaultCamera.Priority = 0;
@@ -48,7 +45,7 @@ public class CameraManager : Singleton<CameraManager>
         }
     }
 
-    public void ExitView()
+    public void NormalView()
     {
         SetNormalView();
     }

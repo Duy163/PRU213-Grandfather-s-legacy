@@ -3,16 +3,11 @@ using UnityEngine.InputSystem;
 
 public class UIController : MonoBehaviour
 {
-    private InputManager inputManager;
     [SerializeField] private Transform ItemDragCanvas;
     public bool isHoldingItem = false;
     public ItemUI itemHolding;
     private Vector2 offset;
 
-    void Awake()
-    {
-        inputManager = InputManager.Instance;
-    }
     void Update()
     {
         if (!isHoldingItem) return;
@@ -20,10 +15,10 @@ public class UIController : MonoBehaviour
         Vector2 mousePos = Mouse.current.position.ReadValue();
         itemHolding.GetComponent<RectTransform>().position = mousePos - offset;
 
-        if (inputManager.RemoveItem())
-        {
-            RemoveHoldingItem();
-        }
+        // if (inputManager.RemoveItem())
+        // {
+        //     RemoveHoldingItem();
+        // }
     }
 
     public void StartHoldingItem(ItemUI item)

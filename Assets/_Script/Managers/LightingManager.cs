@@ -8,18 +8,17 @@ public class LightingManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Light directionalLight;
-    // [SerializeField] private LightPreset lightPreset;
     [SerializeField] private Gradient ambientColor;
     [SerializeField] private Gradient directionalLightColor;
     [SerializeField] private Gradient fogColor;
     [SerializeField] private AnimationCurve fogDensity;
-    [SerializeField] private Material skyboxMaterial; // Material skybox (Procedural)
-
     [Header("Variables")]
     [SerializeField, Range(0, 24)] private float timeOfDay;
     [SerializeField] private bool enableFog = true;
 
     [Header("Skybox Control")]
+    [SerializeField] private Material skyboxMaterial; // Material skybox (Procedural)
+
     [SerializeField] private Gradient skyTintGradient; // Màu sky theo thời gian
     [SerializeField] private Gradient groundColorGradient; // Màu ground theo thời gian
 

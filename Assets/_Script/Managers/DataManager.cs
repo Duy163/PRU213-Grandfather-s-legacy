@@ -31,7 +31,7 @@ public class DataManager : Singleton<DataManager>
 
             string json = JsonUtility.ToJson(currentGameData, prettyPrint: true);
             File.WriteAllText(savePath, json);
-            Debug.Log("[DataManager] Saved.");
+            Debug.Log("[DataManager] Saved. \n" + savePath);
         }
         catch (Exception e)
         {

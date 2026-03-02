@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimingBarView : MonoBehaviour
+public class TimingBarView : BasePanel
 {
     private TimingBarViewModel vm;
 
@@ -20,9 +20,7 @@ public class TimingBarView : MonoBehaviour
     public void Bind(TimingBarViewModel vm)
     {
         this.vm = vm;
-        gameObject.SetActive(true);
         OnInit();
-
         vm.OnStart += OnStart;
         vm.OnHandle += OnHandle;
         vm.OnFinish += OnFinish;
@@ -37,8 +35,6 @@ public class TimingBarView : MonoBehaviour
         vm.OnFinish -= OnFinish;
 
         vm = null;
-        gameObject.SetActive(false);
-
     }
 
     void Update()

@@ -17,7 +17,7 @@ public class FishingSpotInteractable : MonoBehaviour, IInteractable
 
     public void Interact(GameObject player)
     {
-        FishingEvent.OnEnableFishing?.Invoke(item);
+        FishingManager.Instance.StartFishing(item);
     }
 
     public Transform GetTransform()

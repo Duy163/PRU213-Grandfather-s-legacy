@@ -3179,7 +3179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d7621cb7ad6604c8bcfa1f026fde80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
-  dialogueView: {fileID: 853703518}
+  dialoguePanel: {fileID: 853703514}
+  speakerText: {fileID: 449669739}
+  dialogueText: {fileID: 659877037}
+  portraitImage: {fileID: 640176829}
+  continuePrompt: {fileID: 1420416339}
 --- !u!1 &413727942
 GameObject:
   m_ObjectHideFlags: 0
@@ -5075,9 +5079,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1358430856}
   - {fileID: 779115749}
   - {fileID: 864333233}
-  - {fileID: 1358430856}
   m_Father: {fileID: 1136774667}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5958,7 +5962,6 @@ GameObject:
   - component: {fileID: 853703515}
   - component: {fileID: 853703517}
   - component: {fileID: 853703516}
-  - component: {fileID: 853703518}
   m_Layer: 0
   m_Name: DialoguePanel
   m_TagString: Untagged
@@ -6034,23 +6037,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &853703518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853703514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca2e4b4e12c1f654ab6315c3a3be4a39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueView
-  root: {fileID: 853703514}
-  speakerText: {fileID: 449669739}
-  dialogueText: {fileID: 659877037}
-  portraitImage: {fileID: 640176829}
-  continuePrompt: {fileID: 1420416339}
 --- !u!1001 &861856452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11350,51 +11336,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &978138146
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 978138147}
-  - component: {fileID: 978138148}
-  m_Layer: 0
-  m_Name: Fishing
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &978138147
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978138146}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1308448746}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &978138148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978138146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5541f5f971724344e84ef6f5625b91d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FishingManager
-  timingBarView: {fileID: 980061487}
 --- !u!1 &980061483
 GameObject:
   m_ObjectHideFlags: 0
@@ -13010,7 +12951,6 @@ Transform:
   - {fileID: 919581377}
   - {fileID: 689071847}
   - {fileID: 121611852}
-  - {fileID: 978138147}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1309647969
@@ -14418,6 +14358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishingController
   timingBarView: {fileID: 980061487}
+  inputManager: {fileID: 723512912}
+  uiManager: {fileID: 1201518403}
 --- !u!114 &1513490939
 MonoBehaviour:
   m_ObjectHideFlags: 0

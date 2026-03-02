@@ -15,12 +15,13 @@ public abstract class BaseInventoryController : MonoBehaviour
 
     public virtual void Show()
     {
+        inventoryView.Show();
         viewModel.AddItemFormList();
     }
 
     public virtual void Hide()
     {
-        // Hide logic
+        inventoryView.Hide();
     }
 
     public void PickItem(ItemUI item)

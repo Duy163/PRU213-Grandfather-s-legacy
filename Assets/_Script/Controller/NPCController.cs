@@ -19,6 +19,7 @@ public class NPCController : MonoBehaviour
         this.data = data;
         this.database = database;
 
+        InputManager.Instance.EnableDialogue();
         // Ưu tiên 1: dialogue được StoryDirector queue
         string queuedID = NPCManager.Instance.DequeueDialogue(data.npcID);
         if (!string.IsNullOrEmpty(queuedID))

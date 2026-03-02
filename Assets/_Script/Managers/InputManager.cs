@@ -3,22 +3,24 @@ using UnityEngine.InputSystem;
 
 public class InputManager : Singleton<InputManager>
 {
-    // ================= CONSTANTS =========================
-
-    // ================= Serialized Fields =================
-
     // ================= State =============================
+    private InputActionMap a_ship;
+    private InputActionMap a_fishing;
+    private InputActionMap a_dialogue;
+    private InputActionMap a_cargo;
 
-    private InputAction m_MoveAction;
-    private InputAction m_RotateCameraAction;
-    private InputAction m_InteractAction;
-    private InputAction m_CatchFishAction;
-    private InputAction m_OpenInventoryAction;
-    private InputAction m_CloseInventoryAction;
+    private InputAction m_Move;
+    private InputAction m_Look;
+    private InputAction m_Interact;
+    private InputAction m_Catch;
+    private InputAction m_Cargo;
+    private InputAction m_CloseCargo;
+    private InputAction m_CloseFishing;
+    private InputAction m_CloseDialogue;
     private InputAction m_RotateItemAction;
     private InputAction m_RemoveItemAction;
     private InputAction m_RightClickAction;
-    private InputAction m_NextDialogue;
+    private InputAction m_Next;
 
     // ================= Public Properties =================
     public InputActionAsset inputActions;
@@ -28,15 +30,13 @@ public class InputManager : Singleton<InputManager>
     protected override void Awake()
     {
         base.Awake();
-        EnableUIInput(false);
 
+        InitializeActionMaps();
         InitializeActions();
         SubscribeToInputSystem();
+
+        EnableShip();
     }
-
-    // ================= Input Handling ====================
-
-    // ================= Initialization ====================
 
     // ================= Core Logic ========================
 
@@ -57,45 +57,106 @@ public class InputManager : Singleton<InputManager>
         inputActions.FindActionMap("UI").Disable();
     }
 
+    void InitializeActionMaps()
+    {
+        a_ship = inputActions.FindActionMap("Ship", true);
+        a_fishing = inputActions.FindActionMap("Fishing", true);
+        a_dialogue = inputActions.FindActionMap("Dialogue", true);
+        a_cargo = inputActions.FindActionMap("Cargo", true);
+    }
+
     void InitializeActions()
     {
-        m_MoveAction = InputSystem.actions.FindAction("Move");
-        m_RotateCameraAction = InputSystem.actions.FindAction("RotateCamera");
-        m_InteractAction = InputSystem.actions.FindAction("Interact");
-        m_CatchFishAction = InputSystem.actions.FindAction("CatchFish");
-        m_OpenInventoryAction = InputSystem.actions.FindAction("OpenInventory");
-        m_CloseInventoryAction = InputSystem.actions.FindAction("CloseInventory");
-        m_RotateItemAction = InputSystem.actions.FindAction("RotateItem");
-        m_RemoveItemAction = InputSystem.actions.FindAction("RemoveItem");
-        m_RightClickAction = InputSystem.actions.FindAction("RightClick");
-        m_NextDialogue = InputSystem.actions.FindAction("NextDialogue");
+        //ship
+        m_Move = a_ship.FindAction("Move", true);
+        m_Look = a_ship.FindAction("Look", true);
+        m_Interact = a_ship.FindAction("Interact", true);
+        m_Cargo = a_ship.FindAction("Cargo", true);
+
+        //fishing
+        m_Catch = a_fishing.FindAction("Catch", true);
+        m_CloseFishing = a_fishing.FindAction("Close", true);
+
+        //cargo
+        m_CloseCargo = a_cargo.FindAction("Close", true);
+
+        //dialogue
+        m_Next = a_dialogue.FindAction("Next", true);
+        m_CloseDialogue = a_dialogue.FindAction("Close", true);
+
+        // m_RotateItemAction = a_cargo.FindAction("RotateItem", true);
+        // m_RemoveItemAction = a_cargo.FindAction("RemoveItem", true);
+        // m_RightClickAction = a_ship.FindAction("RightClick", true);
+
     }
 
     void SubscribeToInputSystem()
     {
-        m_MoveAction.performed += ctx => InputEvent.TriggerMove(ctx.ReadValue<Vector2>());
-        m_MoveAction.canceled += ctx => InputEvent.TriggerMove(Vector2.zero);
+        //ship
+        m_Move.performed += ctx => InputEvent.TriggerMove(ctx.ReadValue<Vector2>());
+        m_Move.canceled += ctx => InputEvent.TriggerMove(Vector2.zero);
+        m_Look.started += ctx => InputEvent.TriggerCameraRotate(true);
+        m_Look.canceled += ctx => InputEvent.TriggerCameraRotate(false);
+        m_Interact.performed += ctx => InputEvent.TriggerInteract();
+        m_Cargo.performed += ctx => InputEvent.TriggerOpenInventory();
 
-        // Player actions
-        m_RotateCameraAction.started += ctx => InputEvent.TriggerCameraRotate(true);
-        m_RotateCameraAction.canceled += ctx => InputEvent.TriggerCameraRotate(false);
-        m_InteractAction.performed += ctx => InputEvent.TriggerInteract();
-        m_CatchFishAction.performed += ctx => InputEvent.TriggerCatchFish();
+        //fishing
+        m_Catch.performed += ctx => InputEvent.TriggerCatchFish();
+        m_CloseFishing.performed += ctx => InputEvent.TriggerCloseFishing();
 
-        // UI actions
-        m_OpenInventoryAction.performed += ctx => InputEvent.TriggerOpenInventory();
-        m_CloseInventoryAction.performed += ctx => InputEvent.TriggerCloseInventory();
-        m_RotateItemAction.performed += ctx => InputEvent.TriggerRotateItem();
-        m_RemoveItemAction.performed += ctx => InputEvent.TriggerRemoveItem();
-        m_RightClickAction.started += ctx => InputEvent.TriggerRightClick();
-        m_NextDialogue.performed += ctx => InputEvent.TriggerNextDialogue();
+        //cargo
+        m_CloseCargo.performed += ctx => InputEvent.TriggerCloseInventory();
+
+
+        //dialogue
+        m_Next.performed += ctx => InputEvent.TriggerNextDialogue();
+        m_CloseDialogue.performed += ctx => InputEvent.TriggerCloseDialogue();
+
+
+        // m_RotateItemAction.performed += ctx => InputEvent.TriggerRotateItem();
+        // m_RemoveItemAction.performed += ctx => InputEvent.TriggerRemoveItem();
+        // m_RightClickAction.started += ctx => InputEvent.TriggerRightClick();
     }
 
-    // ================= Subsystem =========================
+    // ══════════════════════════════════════════════════
+    //  SWITCH CONTEXT — gọi khi đổi trạng thái game
+    // ══════════════════════════════════════════════════
 
-    // ================= Event Handlers ====================
+    public void EnableShip()
+    {
+        a_ship.Enable();
+        a_fishing.Disable();
+        a_dialogue.Disable();
+        a_cargo.Disable();
+        Debug.Log("[Input] Ship mode");
+    }
 
-    // ================= Public API ========================
+    public void EnableFishing()
+    {
+        a_ship.Disable();
+        a_fishing.Enable();
+        a_dialogue.Disable();
+        a_cargo.Disable();
+        Debug.Log("[Input] Fishing mode");
+    }
+
+    public void EnableDialogue()
+    {
+        a_ship.Disable();
+        a_fishing.Disable();
+        a_dialogue.Enable();
+        a_cargo.Disable();
+        Debug.Log("[Input] Dialogue mode");
+    }
+
+    public void EnableCargo()
+    {
+        a_ship.Disable();
+        a_fishing.Disable();
+        a_dialogue.Disable();
+        a_cargo.Enable();
+        Debug.Log("[Input] Cargo mode");
+    }
 
     public void EnableUIInput(bool enable)
     {
@@ -111,14 +172,11 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
-    // ================= Helpers ===========================
-
-    // ================= Debug / Editor ====================
 
 
     public Vector2 GetMovement()
     {
-        return m_MoveAction.ReadValue<Vector2>();
+        return m_Move.ReadValue<Vector2>();
     }
 
     public bool RemoveItem()

@@ -6,11 +6,12 @@ public class DialogueManager : Singleton<DialogueManager>
 {
 
     [Header("UI")]
-    [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private TextMeshProUGUI speakerText;
-    [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private Image portraitImage;
-    [SerializeField] private GameObject continuePrompt; // "Nhấn Space để tiếp"
+    // [SerializeField] private GameObject dialoguePanel;
+    // [SerializeField] private TextMeshProUGUI speakerText;
+    // [SerializeField] private TextMeshProUGUI dialogueText;
+    // [SerializeField] private Image portraitImage;
+    // [SerializeField] private GameObject continuePrompt; // "Nhấn Space để tiếp"
+    [SerializeField] private DialogueView dialogueView; // Tham chiếu đến DialogueView
 
     private DialogueData current;
     private int lineIndex;
@@ -47,6 +48,7 @@ public class DialogueManager : Singleton<DialogueManager>
         lineIndex = 0;
         isPlaying = true;
 
+        dialogueView.Show(); // Hiển thị panel dialogue
 
         ShowLine();
     }
@@ -56,17 +58,10 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         var line = current.lines[lineIndex];
 
-        speakerText.text = line.speakerName;
-        dialogueText.text = line.text;
-
-        if (portraitImage != null)
-        {
-            portraitImage.sprite = line.portrait;
-            portraitImage.enabled = line.portrait != null;
-        }
+        dialogueView.UpdateDialogue(line);
 
         bool hasNextLine = lineIndex < current.lines.Count - 1;
-        continuePrompt.SetActive(hasNextLine);
+        dialogueView.ShowContinuePrompt(hasNextLine);
     }
 
     // ── SANG DÒNG TIẾP THEO ────────────────────────────
@@ -102,7 +97,10 @@ public class DialogueManager : Singleton<DialogueManager>
         current = null;
         lineIndex = 0;
 
-        continuePrompt.SetActive(false);
+        dialogueView.Hide(); // Ẩn panel dialogue
+
+        dialogueView.ShowContinuePrompt(false);
+        InputManager.Instance.EnableShip();
         DataManager.Instance.Save();
     }
 }

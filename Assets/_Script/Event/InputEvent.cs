@@ -3,41 +3,52 @@ using UnityEngine;
 
 public static class InputEvent
 {
-    // Player Actions
+    // Ship
     public static event Action<Vector2> OnMove;
-    public static event Action<Vector2> OnLook;
-    public static event Action<bool> OnCameraRotate; // true = pressed, false = released
-
-    // Gameplay Actions
+    public static event Action<bool> OnCameraRotate;
     public static event Action OnInteractPressed;
-    public static event Action OnCatchFishPressed;
-
-    // UI Actions
     public static event Action OnOpenInventoryPressed;
+
+    // Fishing
+    public static event Action OnCatchFishPressed;
+    public static event Action OnCloseFishingPressed;
+
+    // Cargo
     public static event Action OnCloseInventoryPressed;
+
+    // Dialogue
+    public static event Action OnNextDialoguePressed;
+    public static event Action OnCloseDialoguePressed;
+
+
     public static event Action OnRotateItemPressed;
     public static event Action OnRemoveItemPressed;
     public static event Action OnRightClickPressed;
-    public static event Action OnNextDialoguePressed;
 
 
+
+    // Ship
     internal static void TriggerMove(Vector2 movement) => OnMove?.Invoke(movement);
-    internal static void TriggerLook(Vector2 lookDelta) => OnLook?.Invoke(lookDelta);
     internal static void TriggerCameraRotate(bool isPressed) => OnCameraRotate?.Invoke(isPressed);
-    internal static void TriggerInteract()
-    {
-        OnInteractPressed?.Invoke();
-        // OnOpenInventoryPressed?.Invoke();
-    }
-    internal static void TriggerCatchFish() => OnCatchFishPressed?.Invoke();
+    internal static void TriggerInteract() => OnInteractPressed?.Invoke();
     internal static void TriggerOpenInventory() => OnOpenInventoryPressed?.Invoke();
-    internal static void TriggerCloseInventory()
-    {
-        OnCloseInventoryPressed?.Invoke();
-        FishingEvent.OnUnableFishing?.Invoke();
-    }
+
+    // Cargo
+    internal static void TriggerCloseInventory() => OnCloseInventoryPressed?.Invoke();
+
+    // Fishing
+    internal static void TriggerCloseFishing() => OnCloseFishingPressed?.Invoke();
+
+
+    internal static void TriggerCatchFish() => OnCatchFishPressed?.Invoke();
+
+    // Dialogue
+    internal static void TriggerCloseDialogue() => OnCloseDialoguePressed?.Invoke();
+    internal static void TriggerNextDialogue() => OnNextDialoguePressed?.Invoke();
+
+
     internal static void TriggerRotateItem() => OnRotateItemPressed?.Invoke();
     internal static void TriggerRemoveItem() => OnRemoveItemPressed?.Invoke();
     internal static void TriggerRightClick() => OnRightClickPressed?.Invoke();
-    internal static void TriggerNextDialogue() => OnNextDialoguePressed?.Invoke();
+
 }

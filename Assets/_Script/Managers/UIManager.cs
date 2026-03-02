@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
@@ -7,6 +8,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject FishingUI;
     [SerializeField] private GameObject OtherInventoryUI;
     [SerializeField] private GameObject TalkUI;
+    [SerializeField] private List<BasePanel> RightPanelList;
+    [SerializeField] private List<BasePanel> LeftPanelList;
 
 
     public enum state
@@ -25,20 +28,21 @@ public class UIManager : Singleton<UIManager>
 
     void OnEnable()
     {
-        InputEvent.OnOpenInventoryPressed += OnOpenInventory;
-        InputEvent.OnCloseInventoryPressed += OnClose;
+        // InputEvent.OnOpenInventoryPressed += OnOpenInventory;
 
-        StoryEvent.OnStartDialogue += OnOpenTalk;
-        StoryEvent.OnEndDialogue += OnClose;
+        // InputEvent.OnCloseInventoryPressed += OnClose;
 
-        FishingEvent.OnEnableFishing += OnOpenFishing;
-        InventoryEvent.OnInitOtherInventory += OnOpenOtherInventory;
+
+        // StoryEvent.OnStartDialogue += OnOpenTalk;
+        // StoryEvent.OnEndDialogue += OnClose;
+
+        // FishingEvent.OnEnableFishing += OnOpenFishing;
+        // InventoryEvent.OnInitOtherInventory += OnOpenOtherInventory;
     }
 
     void OnOpenInventory()
     {
         SetInventoryUI(true);
-
     }
 
     void OnOpenFishing(ItemData item)

@@ -48,7 +48,7 @@ public class InventoryManager : Singleton<InventoryManager>
 
     // ============= Input Handling =============
 
-    void OnOpenInventoryPressed()
+    public void OnOpenInventoryPressed()
     {
         playerController.Show();
 
@@ -57,12 +57,17 @@ public class InventoryManager : Singleton<InventoryManager>
             otherController.Show();
         }
 
-        InputManager.Instance.EnableUIInput(true);
+        InputManager.Instance.EnableCargo();
     }
 
-    void OnCloseInventoryPressed()
+    public void OnCloseInventoryPressed()
     {
-        InputManager.Instance.EnableUIInput(false);
+        playerController.Hide();
+        if (hasOtherInventory)
+        {
+            otherController.Hide();
+        }
+        InputManager.Instance.EnableShip();
     }
     // ============= Public =============
     public int CountItemInPlayerInventory(string itemID)

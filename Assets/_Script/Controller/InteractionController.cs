@@ -25,7 +25,6 @@ public class InteractionController : MonoBehaviour
         {
             if (currentInteractable.CanInteract())
             {
-                InputManager.Instance.EnableUIInput(true);
                 currentInteractable.Interact(gameObject);
             }
         }

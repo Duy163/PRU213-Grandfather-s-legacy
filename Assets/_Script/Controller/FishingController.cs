@@ -8,9 +8,6 @@ public class FishingController : MonoBehaviour
 
     [SerializeField] TimingBarView timingBarView;
 
-    [SerializeField] private InputManager inputManager;
-    [SerializeField] private UIManager uiManager;
-
     // ================= State =============================
 
     private IFishingMinigame vm;
@@ -21,27 +18,24 @@ public class FishingController : MonoBehaviour
 
     // ================= Unity Lifecycle ===================
 
-    void Awake()
-    {
-        inputManager = InputManager.Instance;
-    }
-
     void OnEnable()
     {
         // InputEvent.OnOpenFishingPressed += OnOpenFishing;
-        InputEvent.OnCatchFishPressed += OnCatchFish;
+        // InputEvent.OnCatchFishPressed += OnCatchFish;
+        // InputEvent.OnCloseFishingPressed += OnCloseFishing;
 
-        FishingEvent.OnEnableFishing += OnOpenFishing;
-        FishingEvent.OnUnableFishing += HandleUnableFishing;
+        // FishingEvent.OnEnableFishing += OnOpenFishing;
+        // FishingEvent.OnUnableFishing += HandleUnableFishing;
     }
 
     void OnDisable()
     {
         // InputEvent.OnOpenFishingPressed -= OnOpenFishing;
-        InputEvent.OnCatchFishPressed -= OnCatchFish;
+        // InputEvent.OnCatchFishPressed -= OnCatchFish;
+        // InputEvent.OnCloseFishingPressed -= OnCloseFishing;
 
-        FishingEvent.OnEnableFishing -= OnOpenFishing;
-        FishingEvent.OnUnableFishing -= HandleUnableFishing;
+        // FishingEvent.OnEnableFishing -= OnOpenFishing;
+        // FishingEvent.OnUnableFishing -= HandleUnableFishing;
     }
 
     // ================= Input Handling ====================
@@ -51,9 +45,11 @@ public class FishingController : MonoBehaviour
         // if (item == null || !canFishing) return;
         this.item = item;
         canFishing = true;
+        InventoryManager.Instance.OnOpenInventoryPressed();
+
 
         Init(this.item);
-        inputManager.EnableUIInput(true);
+        InputManager.Instance.EnableFishing();
         vm.Start();
     }
 
@@ -72,6 +68,14 @@ public class FishingController : MonoBehaviour
         }
     }
 
+    void OnCloseFishing()
+    {
+        InventoryManager.Instance.OnCloseInventoryPressed();
+        canFishing = false;
+        Clear();
+        InputManager.Instance.EnableShip();
+    }
+
     // ================= Initialization ====================
 
     void Init(ItemData item)
@@ -84,6 +88,7 @@ public class FishingController : MonoBehaviour
                 var temp = new TimingBarViewModel(item, CaculatorDificult(item));
                 vm = temp;
                 timingBarView.Bind(temp);
+                timingBarView.Show();
                 break;
             case MinigameType.none:
                 break;
@@ -95,7 +100,10 @@ public class FishingController : MonoBehaviour
     void Clear()
     {
         if (timingBarView != null)
+        {
+            timingBarView.Hide();
             timingBarView.UnBind();
+        }
         vm = null;
     }
 
