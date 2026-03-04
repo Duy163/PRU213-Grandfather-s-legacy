@@ -7850,6 +7850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   playerController: {fileID: 1513490939}
   otherController: {fileID: 1513490940}
+  fishDatabase: {fileID: 11400000, guid: a50da35f2470c5440bc112b66572a88c, type: 2}
 --- !u!1 &1201518401
 GameObject:
   m_ObjectHideFlags: 0
