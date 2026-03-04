@@ -15,7 +15,7 @@ public class NPCInteracttive : MonoBehaviour, IInteractable
         return true;
     }
 
-    public void Interact(GameObject player)
+    public void Interact()
     {
         StoryEvent.OnStartDialogue?.Invoke(data, database);
     }

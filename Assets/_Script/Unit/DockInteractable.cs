@@ -29,11 +29,9 @@ public class DockInteractable : MonoBehaviour, IInteractable
         isDocking = true;
     }
 
-
-
     public string GetInteractPrompt()
     {
-        return "Hold [F] Open Chest";
+        return "Hold [F] Dock Ship";
     }
 
     public bool CanInteract()
@@ -41,11 +39,10 @@ public class DockInteractable : MonoBehaviour, IInteractable
         return isAvailable;
     }
 
-    public void Interact(GameObject player)
+    public void Interact()
     {
         StartDocking();
-        CameraEvent.OnFocusIslandCamera?.Invoke(dockName);
-        // InventoryEvent.OnInitOtherInventory?.Invoke(inventory);
+        WorldDataManager.Instance.StartDocking(dockName);
     }
 
     public Transform GetTransform()
@@ -80,6 +77,10 @@ public class DockInteractable : MonoBehaviour, IInteractable
             ship.position = dockPoint.position;
             ship.rotation = dockPoint.rotation;
             isDocking = false;
+            DataManager.Instance.currentGameData.playerShipData.position = ship.position;
+            DataManager.Instance.currentGameData.playerShipData.rotation = ship.rotation;
+            DataManager.Instance.Save();
+            Debug.Log($"Ship docked at {dockName}. Position saved.");
         }
     }
 }

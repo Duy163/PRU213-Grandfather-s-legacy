@@ -7,9 +7,10 @@ public abstract class BaseInventoryController : MonoBehaviour
 
     protected InventoryViewModel viewModel;
 
-    public virtual void Initialize(InventoryData data)
+    public virtual void Initialize(InventoryData data, FishDatabase fishDatabase)
     {
-        viewModel = new InventoryViewModel(data, IsPlayerInventory());
+        viewModel = new InventoryViewModel(data, fishDatabase, IsPlayerInventory());
+
         inventoryView.Bind(inventoryFrame, viewModel, IsPlayerInventory());
     }
 
@@ -59,6 +60,19 @@ public abstract class BaseInventoryController : MonoBehaviour
     public void DestroyListItem(string itemID, int amount)
     {
         viewModel.DestroyListItem(itemID, amount);
+    }
+
+    public void SaleItem(ItemData item)
+    {
+        int price = (int)item.value;
+        viewModel.DestroyListItem(item.itemId, 1);
+        CurrencyManager.Instance.AddMoney(price);
+    }
+
+    public void SaleAllItem()
+    {
+        int totalPrice = viewModel.SaleAllItem();
+        CurrencyManager.Instance.AddMoney(totalPrice);
     }
 
     protected abstract bool IsPlayerInventory();

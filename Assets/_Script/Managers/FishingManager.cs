@@ -62,7 +62,7 @@ public class FishingManager : Singleton<FishingManager>
         if (isFinish)
         {
             canFishing = false;
-            InventoryEvent.OnAddItem?.Invoke(item);
+            InventoryManager.Instance.AddItemForPlayer(item);
         }
     }
 

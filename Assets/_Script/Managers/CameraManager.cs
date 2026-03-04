@@ -8,6 +8,9 @@ public class CameraManager : Singleton<CameraManager>
     [SerializeField] private CinemachineCamera fishingCamera;
     [SerializeField] private CinemachineCamera defaultCamera;
     [SerializeField] private CinemachineCamera quietIslandCamera;
+    [SerializeField] private CinemachineCamera eastIslandCamera;
+    [SerializeField] private CinemachineCamera westIslandCamera;
+    [SerializeField] private CinemachineCamera northIslandCamera;
 
     private CinemachineBrain brain;
 
@@ -38,6 +41,18 @@ public class CameraManager : Singleton<CameraManager>
         {
             case "QuietIsland":
                 quietIslandCamera.Priority = 20;
+                defaultCamera.Priority = 0;
+                break;
+            case "EastIsland":
+                eastIslandCamera.Priority = 20;
+                defaultCamera.Priority = 0;
+                break;
+            case "WestIsland":
+                westIslandCamera.Priority = 20;
+                defaultCamera.Priority = 0;
+                break;
+            case "NorthIsland":
+                northIslandCamera.Priority = 20;
                 defaultCamera.Priority = 0;
                 break;
             default:

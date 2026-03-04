@@ -27,6 +27,7 @@ public class ItemData : ScriptableObject
 
     [Header("Type")]
     public FishType fishType;
+    public TimeType timeType;
     public ItemType itemType;
     public MinigameType minigameType;
 }
@@ -38,6 +39,13 @@ public enum FishType
     Oceanic,
     Mangrove,
     Depth
+}
+
+public enum TimeType
+{
+    Day,
+    Night,
+    Any
 }
 
 public enum ItemType

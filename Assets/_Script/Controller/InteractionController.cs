@@ -25,7 +25,7 @@ public class InteractionController : MonoBehaviour
         {
             if (currentInteractable.CanInteract())
             {
-                currentInteractable.Interact(gameObject);
+                currentInteractable.Interact();
             }
         }
     }

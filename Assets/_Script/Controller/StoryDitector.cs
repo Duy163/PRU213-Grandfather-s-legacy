@@ -15,23 +15,6 @@ public class StoryDirector : Singleton<StoryDirector>
             Debug.LogError("StoryDirector: No StoryDatabase assigned!");
     }
 
-    // ── GỌI SAU MỖI HÀNH ĐỘNG CỦA PLAYER ─────────────
-    // public void Evaluate()
-    // {
-    //     foreach (var trigger in database.allTriggers)
-    //     {
-    //         // Bỏ qua nếu đã bắn rồi
-    //         if (worldState.GetFlag($"trigger_fired_{trigger.triggerID}"))
-    //             continue;
-
-    //         // Kiểm tra tất cả điều kiện
-    //         if (!CheckConditions(trigger.conditions))
-    //             continue;
-
-    //         FireTrigger(trigger);
-    //     }
-    // }
-
     // ── KIỂM TRA ĐIỀU KIỆN ────────────────────────────
     public bool CheckConditions(List<StoryCondition> conditions)
     {

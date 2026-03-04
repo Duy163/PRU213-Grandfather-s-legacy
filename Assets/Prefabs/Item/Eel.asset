@@ -22,5 +22,6 @@ MonoBehaviour:
   MAX_WEIGHT: 50
   MAX_VALUE: 200
   fishType: 1
+  timeType: 1
   itemType: 0
   minigameType: 0

@@ -8,6 +8,7 @@ public class InputManager : Singleton<InputManager>
     private InputActionMap a_fishing;
     private InputActionMap a_dialogue;
     private InputActionMap a_cargo;
+    private InputActionMap a_dock;
 
     private InputAction m_Move;
     private InputAction m_Look;
@@ -21,6 +22,7 @@ public class InputManager : Singleton<InputManager>
     private InputAction m_RemoveItemAction;
     private InputAction m_RightClickAction;
     private InputAction m_Next;
+    private InputAction m_CloseDock;
 
     // ================= Public Properties =================
     public InputActionAsset inputActions;
@@ -63,6 +65,7 @@ public class InputManager : Singleton<InputManager>
         a_fishing = inputActions.FindActionMap("Fishing", true);
         a_dialogue = inputActions.FindActionMap("Dialogue", true);
         a_cargo = inputActions.FindActionMap("Cargo", true);
+        a_dock = inputActions.FindActionMap("Dock", true);
     }
 
     void InitializeActions()
@@ -83,6 +86,9 @@ public class InputManager : Singleton<InputManager>
         //dialogue
         m_Next = a_dialogue.FindAction("Next", true);
         m_CloseDialogue = a_dialogue.FindAction("Close", true);
+
+        //dock
+        m_CloseDock = a_dock.FindAction("Close", true);
 
         // m_RotateItemAction = a_cargo.FindAction("RotateItem", true);
         // m_RemoveItemAction = a_cargo.FindAction("RemoveItem", true);
@@ -112,6 +118,9 @@ public class InputManager : Singleton<InputManager>
         m_Next.performed += ctx => InputEvent.TriggerNextDialogue();
         m_CloseDialogue.performed += ctx => InputEvent.TriggerCloseDialogue();
 
+        //dock
+        m_CloseDock.performed += ctx => InputEvent.TriggerCloseDock();
+
 
         // m_RotateItemAction.performed += ctx => InputEvent.TriggerRotateItem();
         // m_RemoveItemAction.performed += ctx => InputEvent.TriggerRemoveItem();
@@ -128,6 +137,7 @@ public class InputManager : Singleton<InputManager>
         a_fishing.Disable();
         a_dialogue.Disable();
         a_cargo.Disable();
+        a_dock.Disable();
         Debug.Log("[Input] Ship mode");
     }
 
@@ -137,6 +147,7 @@ public class InputManager : Singleton<InputManager>
         a_fishing.Enable();
         a_dialogue.Disable();
         a_cargo.Disable();
+        a_dock.Disable();
         Debug.Log("[Input] Fishing mode");
     }
 
@@ -145,6 +156,7 @@ public class InputManager : Singleton<InputManager>
         a_ship.Disable();
         a_fishing.Disable();
         a_dialogue.Enable();
+        a_dock.Disable();
         a_cargo.Disable();
         Debug.Log("[Input] Dialogue mode");
     }
@@ -154,26 +166,20 @@ public class InputManager : Singleton<InputManager>
         a_ship.Disable();
         a_fishing.Disable();
         a_dialogue.Disable();
+        a_dock.Disable();
         a_cargo.Enable();
         Debug.Log("[Input] Cargo mode");
     }
 
-    public void EnableUIInput(bool enable)
+    public void EnableDock()
     {
-        if (enable)
-        {
-            OnEnableUI();
-            OnDisablePlayer();
-        }
-        else
-        {
-            OnDisableUI();
-            OnEnablePlayer();
-        }
+        a_ship.Disable();
+        a_fishing.Disable();
+        a_dialogue.Disable();
+        a_cargo.Disable();
+        a_dock.Enable();
+        Debug.Log("[Input] Dock mode");
     }
-
-
-
     public Vector2 GetMovement()
     {
         return m_Move.ReadValue<Vector2>();

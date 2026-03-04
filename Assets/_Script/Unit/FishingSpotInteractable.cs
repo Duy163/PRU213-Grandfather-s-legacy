@@ -1,9 +1,15 @@
+using System;
 using UnityEngine;
 
 public class FishingSpotInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private bool isAvailable = true;
-    [SerializeField] private ItemData item;
+    [SerializeField] public ItemData item;
+    [SerializeField] private MeshRenderer meshRenderer;
+
+    [SerializeField] private int fishNumber = 2;
+
+    private int numberFishCatched = 0;
 
     public string GetInteractPrompt()
     {
@@ -15,13 +21,28 @@ public class FishingSpotInteractable : MonoBehaviour, IInteractable
         return isAvailable;
     }
 
-    public void Interact(GameObject player)
+    public void Interact()
     {
         FishingManager.Instance.StartFishing(item);
+        numberFishCatched++;
+        if (numberFishCatched >= fishNumber)
+        {
+            SetAvailable(false);
+        }
     }
 
     public Transform GetTransform()
     {
         return transform;
+    }
+
+    public void SetAvailable(bool available)
+    {
+        isAvailable = available;
+        meshRenderer.enabled = available;
+        if (available)
+        {
+            numberFishCatched = 0;
+        }
     }
 }

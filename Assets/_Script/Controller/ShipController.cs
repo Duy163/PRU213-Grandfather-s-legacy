@@ -7,6 +7,7 @@ public class ShipController : MonoBehaviour
     // ================= Serialized Fields =================
 
     // ================= State =============================
+    PlayerShipData playerShipData;
 
     float acceleration;
     float maxSpeed;
@@ -25,8 +26,8 @@ public class ShipController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0, -0.5f, 0);
-        // rb.constraints = RigidbodyConstraints.FreezeRotationX
-        //        | RigidbodyConstraints.FreezeRotationZ;
+
+        playerShipData = DataManager.Instance.currentGameData.playerShipData;
 
         LoadShipData();
     }
@@ -77,7 +78,13 @@ public class ShipController : MonoBehaviour
 
     private void LoadShipData()
     {
-        PlayerShipData playerShipData = DataManager.Instance.currentGameData.playerShipData;
+        var transform = GetComponent<Transform>();
+        Vector3 temp = transform.position;
+
+        temp.x = playerShipData.position.x;
+        temp.z = playerShipData.position.z;
+
+        transform.position = temp;
 
         acceleration = playerShipData.acceleration;
         maxSpeed = playerShipData.maxSpeed;
@@ -89,14 +96,14 @@ public class ShipController : MonoBehaviour
 
     // ================= Core Logic ========================
 
-    private void ApplyForwardMovement(float verticalInput)
-    {
-        if (Mathf.Abs(verticalInput) < 0.01f)
-            return;
+    // private void ApplyForwardMovement(float verticalInput)
+    // {
+    //     if (Mathf.Abs(verticalInput) < 0.01f)
+    //         return;
 
-        Vector3 forwardForce = transform.forward * verticalInput * acceleration;
-        rb.AddForce(forwardForce, ForceMode.Acceleration);
-    }
+    //     Vector3 forwardForce = transform.forward * verticalInput * acceleration;
+    //     rb.AddForce(forwardForce, ForceMode.Acceleration);
+    // }
 
     // private void ApplyTurning(float horizontalInput)
     // {

@@ -4,8 +4,8 @@ public class PlayerInventoryController : BaseInventoryController
 {
     protected override bool IsPlayerInventory() => true;
 
-    public override void Initialize(InventoryData data)
+    public override void Initialize(InventoryData data, FishDatabase fishDatabase)
     {
-        base.Initialize(data);
+        base.Initialize(data, fishDatabase);
     }
 }

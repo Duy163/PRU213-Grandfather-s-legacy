@@ -13,19 +13,55 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private Gradient fogColor;
     [SerializeField] private AnimationCurve fogDensity;
     [Header("Variables")]
-    [SerializeField, Range(0, 24)] private float timeOfDay;
+    [SerializeField, Range(0, 24)] public float timeOfDay = 6f;
     [SerializeField] private bool enableFog = true;
 
     [Header("Skybox Control")]
     [SerializeField] private Material skyboxMaterial; // Material skybox (Procedural)
-
     [SerializeField] private Gradient skyTintGradient; // Màu sky theo thời gian
     [SerializeField] private Gradient groundColorGradient; // Màu ground theo thời gian
 
+    private int lastSavedHour = -1;
+    private bool hasTriggered6 = false;
+
+    void Start()
+    {
+        if (!Application.isPlaying)
+            return;
+
+        timeOfDay = WorldDataManager.Instance.worldData.gameTime;
+
+
+
+        if (timeOfDay >= 6.0f && timeOfDay < 19.0f)
+        {
+            WorldDataManager.Instance.LoadSpotWithTimeOfDay(true);
+            hasTriggered6 = true;
+        }
+        else
+        {
+            WorldDataManager.Instance.LoadSpotWithTimeOfDay(false);
+            hasTriggered6 = false;
+        }
+    }
+
     private void Update()
     {
-        // if (lightPreset == null)
-        //     return;
+        if (timeOfDay == 0.0f)
+        {
+            WorldDataManager.Instance.worldData.gameTime += 1f;
+        }
+
+        if (!hasTriggered6 && timeOfDay >= 6f)
+        {
+            WorldDataManager.Instance.LoadSpotWithTimeOfDay(true);
+            hasTriggered6 = true;
+        }
+        else if (hasTriggered6 && timeOfDay >= 19f)
+        {
+            hasTriggered6 = false;
+            WorldDataManager.Instance.LoadSpotWithTimeOfDay(false);
+        }
 
         if (Application.isPlaying)
         {
@@ -34,6 +70,18 @@ public class LightingManager : MonoBehaviour
             timeOfDay += delta * (24f / dayLengthInSeconds);
             timeOfDay %= 24f;
 
+            int currentHour = Mathf.FloorToInt(timeOfDay);
+
+            if (currentHour != lastSavedHour)
+            {
+                lastSavedHour = currentHour;
+
+                WorldDataManager.Instance.worldData.gameTime = currentHour;
+                DataManager.Instance.Save(); // hoặc autosave
+                Debug.Log($"[Time] Saved at hour {currentHour}");
+            }
+
+            WorldDataManager.Instance.UpdateClock(timeOfDay);
             UpdateLighting(timeOfDay / 24f);
         }
         else

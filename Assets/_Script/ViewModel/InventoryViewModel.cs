@@ -4,6 +4,7 @@ public class InventoryViewModel
 {
     private InventoryModel model;
     private InventoryData data;
+    private FishDatabase fishDatabase;
 
     private bool isBelongPlayer = false;
 
@@ -13,10 +14,12 @@ public class InventoryViewModel
     public event System.Action<int, int> OnRemoveItem;
     public event System.Action<int, int> OnDestroyItem;
 
-    public InventoryViewModel(InventoryData data, bool isBelongPlayer)
+    public InventoryViewModel(InventoryData data, FishDatabase fishDatabase, bool isBelongPlayer)
     {
         this.data = data;
         model = new InventoryModel(new Vector2(data.column, data.row));
+        this.fishDatabase = fishDatabase;
+
         this.isBelongPlayer = isBelongPlayer;
     }
 
@@ -105,8 +108,9 @@ public class InventoryViewModel
         var listItem = data.items;
         foreach (InventoryItemData item in listItem)
         {
-            SetOccupiedSlot(item.itemData, item.position.x, item.position.y, true);
-            OnAddItem?.Invoke(item.itemData, item.position.x, item.position.y, isBelongPlayer);
+            ItemData data = fishDatabase.GetByID(item.itemID);
+            SetOccupiedSlot(data, item.position.x, item.position.y, true);
+            OnAddItem?.Invoke(data, item.position.x, item.position.y, isBelongPlayer);
         }
     }
 
@@ -142,6 +146,26 @@ public class InventoryViewModel
         {
             DestroyItem(itemID);
         }
+    }
+
+    public int SaleItem(InventoryItemData item)
+    {
+        int price = (int)item.itemData.value;
+        DestroyItem(item.itemData.itemId);
+        return price;
+    }
+
+    public int SaleAllItem()
+    {
+        int totalPrice = 0;
+        foreach (var item in data.items)
+        {
+            totalPrice += (int)item.itemData.value;
+        }
+
+        data.items.Clear();
+
+        return totalPrice;
     }
     //===========================PRIVATE========================================
 

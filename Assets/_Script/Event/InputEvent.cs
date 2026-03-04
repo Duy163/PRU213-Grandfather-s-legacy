@@ -20,6 +20,9 @@ public static class InputEvent
     public static event Action OnNextDialoguePressed;
     public static event Action OnCloseDialoguePressed;
 
+    // Dock
+    public static event Action OnCloseDockPressed;
+
 
     public static event Action OnRotateItemPressed;
     public static event Action OnRemoveItemPressed;
@@ -46,6 +49,8 @@ public static class InputEvent
     internal static void TriggerCloseDialogue() => OnCloseDialoguePressed?.Invoke();
     internal static void TriggerNextDialogue() => OnNextDialoguePressed?.Invoke();
 
+    // Dock
+    internal static void TriggerCloseDock() => OnCloseDockPressed?.Invoke();
 
     internal static void TriggerRotateItem() => OnRotateItemPressed?.Invoke();
     internal static void TriggerRemoveItem() => OnRemoveItemPressed?.Invoke();

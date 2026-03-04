@@ -12,7 +12,7 @@ public class TimingBarView : BasePanel
     [SerializeField] RectTransform successZone;     // Tay quay
     [SerializeField] RectTransform trackZone;      // Vùng bắt cá
     [SerializeField] Image successImg;
-    // [SerializeField] Image itemImg;
+    [SerializeField] Image itemImg;
     [SerializeField] Image processMaker;
     [SerializeField] Transform roundMarkerParent;
     [SerializeField] GameObject roundMarkerPrefab;
@@ -47,6 +47,7 @@ public class TimingBarView : BasePanel
 
     void OnInit()
     {
+        itemImg.sprite = vm.award.icon;
         trackZone.localEulerAngles = Vector3.zero;
         processMaker.fillAmount = 0f;
 

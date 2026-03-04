@@ -31,13 +31,17 @@ public class InventoryData
 [System.Serializable]
 public class InventoryItemData
 {
-    public ItemData itemData;
-    public string itemID => itemData.itemId;
+    public string itemID;
     public Vector2Int position;
+
+    [System.NonSerialized]
+    public ItemData itemData;
 
     public InventoryItemData(ItemData item, Vector2Int pos)
     {
-        itemData = item;
+        itemID = item.itemId;
         position = pos;
+
+        itemData = item;
     }
 }
