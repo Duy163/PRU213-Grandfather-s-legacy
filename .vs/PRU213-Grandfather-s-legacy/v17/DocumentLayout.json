@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ki_7\\PRU_Ass\\PRU213-Grandfather-s-legacy\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FBCE9D-1ABD-8782-FF7B-0FBEFDE8C1B4}|Assembly-CSharp.csproj|d:\\ki_7\\pru_ass\\pru213-grandfather-s-legacy\\assets\\_script\\view\\menustart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FBCE9D-1ABD-8782-FF7B-0FBEFDE8C1B4}|Assembly-CSharp.csproj|solutionrelative:assets\\_script\\view\\menustart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MenuStart.cs",
+              "DocumentMoniker": "D:\\ki_7\\PRU_Ass\\PRU213-Grandfather-s-legacy\\Assets\\_Script\\View\\MenuStart.cs",
+              "RelativeDocumentMoniker": "Assets\\_Script\\View\\MenuStart.cs",
+              "ToolTip": "D:\\ki_7\\PRU_Ass\\PRU213-Grandfather-s-legacy\\Assets\\_Script\\View\\MenuStart.cs",
+              "RelativeToolTip": "Assets\\_Script\\View\\MenuStart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T03:26:20.839Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

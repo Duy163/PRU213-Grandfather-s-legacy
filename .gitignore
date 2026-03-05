@@ -43,3 +43,5 @@ Thumbs.db
 
 # Crash logs
 crashlytics-build.properties
+
+.fake
