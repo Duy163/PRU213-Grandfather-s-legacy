@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c8be1a8313818d4392bc006f2aa7c0f, type: 3}
-  m_Name: minh_spend_money
+  m_Name: quest_1
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questID: minh_spend_money
-  questName: Send money
-  isMainQuest: 0
+  questID: quest_1
+  questName: Quest 1
+  isMainQuest: 1
   nextQuestID: 
   prerequisiteQuestIDs: []
   steps:
-  - stepDescription: Send Money
+  - stepDescription: pay $2000
     objectives:
-    - description: Send Money
+    - description: pay $2000
       type: 3
       targetID: 
-      targetAmount: 50
+      targetAmount: 2000

@@ -10,22 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0184bb0e6d60d664fb460ef3950717ee, type: 3}
-  m_Name: minh_beign
+  m_Name: minh_quest_1_reminder
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
-  dialogueID: minh_begin
+  dialogueID: minh_quest_1_reminder
   lines:
   - speakerName: Minh
-    text: hello bro
-    portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
-    setFlagAfter: met_minh
-    triggerQuestID: 
-  - speakerName: Minh
-    text: how are you
+    text: Do you have the $2000 yet?
     portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
     setFlagAfter: 
     triggerQuestID: 
-  - speakerName: Minh
-    text: hay cho toi 50k
-    portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
-    setFlagAfter: 
-    triggerQuestID: minh_spend_money

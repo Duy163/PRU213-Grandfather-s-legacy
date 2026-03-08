@@ -15,7 +15,7 @@ MonoBehaviour:
   dialogueID: duy_idle
   lines:
   - speakerName: Duy
-    text: uhm...
+    text: Hard work is honorable.
     portrait: {fileID: 21300000, guid: ac69cb07e8694a240812a39b74b2330b, type: 3}
     setFlagAfter: 
     triggerQuestID: 

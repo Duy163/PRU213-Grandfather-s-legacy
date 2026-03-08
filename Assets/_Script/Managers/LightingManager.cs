@@ -47,14 +47,15 @@ public class LightingManager : MonoBehaviour
 
     private void Update()
     {
-        if (!hasTriggered6 && timeOfDay >= 6f)
+        if (!hasTriggered6 && timeOfDay >= 6f && timeOfDay <= 19f)
         {
             WorldDataManager.Instance.worldData.gameTime += 1f;
             WorldDataManager.Instance.LoadSpotWithTimeOfDay(true);
 
             hasTriggered6 = true;
         }
-        else if (hasTriggered6 && timeOfDay >= 19f)
+
+        if (hasTriggered6 && timeOfDay >= 19f)
         {
             hasTriggered6 = false;
             WorldDataManager.Instance.LoadSpotWithTimeOfDay(false);
@@ -167,5 +168,11 @@ public class LightingManager : MonoBehaviour
         {
             skyboxMaterial = RenderSettings.skybox;
         }
+    }
+
+    public void SetDayLength()
+    {
+        if (dayLengthInSeconds == 1200f) dayLengthInSeconds = 20f;
+        else dayLengthInSeconds = 1200f;
     }
 }

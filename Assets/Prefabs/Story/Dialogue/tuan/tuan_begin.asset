@@ -15,17 +15,22 @@ MonoBehaviour:
   dialogueID: tuan_begin
   lines:
   - speakerName: Tuan
-    text: an oc ko cu
+    text: Minh sent you here?
     portrait: {fileID: 21300000, guid: 7a8ea276f119e07418af65523866f3d7, type: 3}
     setFlagAfter: 
     triggerQuestID: 
   - speakerName: Tuan
-    text: "\u0111i an oc di"
+    text: It's always cold here.
     portrait: {fileID: 21300000, guid: 7a8ea276f119e07418af65523866f3d7, type: 3}
     setFlagAfter: 
     triggerQuestID: 
   - speakerName: Tuan
-    text: le di cu
+    text: Because of that, resources are scarce.
     portrait: {fileID: 21300000, guid: 7a8ea276f119e07418af65523866f3d7, type: 3}
     setFlagAfter: 
     triggerQuestID: 
+  - speakerName: Tuan
+    text: Please help me catch 15 cod.
+    portrait: {fileID: 21300000, guid: 7a8ea276f119e07418af65523866f3d7, type: 3}
+    setFlagAfter: 
+    triggerQuestID: quest_4

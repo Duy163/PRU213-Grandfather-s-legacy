@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0184bb0e6d60d664fb460ef3950717ee, type: 3}
-  m_Name: minh_check_money
+  m_Name: duy_quest_3_reminder
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
-  dialogueID: minh_check_money
+  dialogueID: duy_quest_3_reminder
   lines:
-  - speakerName: Minh
-    text: cam on nha
-    portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
+  - speakerName: Duy
+    text: I'm still waiting for your 7 eels.
+    portrait: {fileID: 21300000, guid: ac69cb07e8694a240812a39b74b2330b, type: 3}
     setFlagAfter: 
     triggerQuestID: 

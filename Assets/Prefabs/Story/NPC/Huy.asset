@@ -15,17 +15,17 @@ MonoBehaviour:
   npcID: huy
   displayName: Huy
   dialoguePool:
-  - dialogue: {fileID: 11400000, guid: 6272fdcab81cf7a41bdc7f4f77642ab8, type: 2}
-    priority: 1
-    oneTimeOnly: 1
+  - dialogue: {fileID: 11400000, guid: 9c304184bf91f4d43a244f07355ac524, type: 2}
+    priority: 0
+    oneTimeOnly: 0
     conditions: []
     editorNote: 
     checkType: 0
     checkQuestID: 
     checkStep: 0
-  - dialogue: {fileID: 11400000, guid: 9c304184bf91f4d43a244f07355ac524, type: 2}
-    priority: 0
-    oneTimeOnly: 0
+  - dialogue: {fileID: 11400000, guid: 6272fdcab81cf7a41bdc7f4f77642ab8, type: 2}
+    priority: 1
+    oneTimeOnly: 1
     conditions: []
     editorNote: 
     checkType: 0

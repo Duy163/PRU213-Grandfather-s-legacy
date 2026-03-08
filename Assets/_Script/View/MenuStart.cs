@@ -8,5 +8,9 @@ public class MenuStart : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
-    
+    public void NewGame()
+    {
+        DataManager.Instance.CreateNewGame();
+        SceneManager.LoadScene("MainScene");
+    }
 }

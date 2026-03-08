@@ -43,6 +43,7 @@ public class NPCController : MonoBehaviour
         DialogueData toPlay = ResolveDialogue(best);
         if (toPlay != null)
             DialogueManager.Instance.StartDialogue(toPlay);
+        else Debug.Log("no dialogue to play");
     }
 
     // ── TÌM DIALOGUE PHÙ HỢP NHẤT ─────────────────────
@@ -84,9 +85,8 @@ public class NPCController : MonoBehaviour
                 result = ResolveByObjectives(cd);
                 break;
         }
-
         // ── Gắn cờ tập trung tại đây, bỏ trong 2 hàm kia ──
-        if (cd.oneTimeOnly && result != null)
+        if (cd.oneTimeOnly && result != null && cd.dialogue.dialogueID == result.dialogueID)
             DataManager.Instance.WorldState
                        .SetFlag($"dialogue_seen_{cd.dialogue.dialogueID}", true);
 
@@ -111,6 +111,8 @@ public class NPCController : MonoBehaviour
         bool passed = QuestManager.Instance.EvaluateQuest(
                           cd.checkQuestID,
                           cd.checkStep);
+
+        if (!passed) Debug.Log(cd.dialogue.dialogueID + "_reminder");
 
         if (!passed)
             return GetDialogue(cd.dialogue.dialogueID + "_reminder");

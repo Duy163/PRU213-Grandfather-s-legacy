@@ -64,7 +64,7 @@ public class InventoryViewModel
         int count = 0;
         foreach (var item in data.items)
         {
-            if (item.itemData.itemId == id)
+            if (item.itemID == id)
                 count++;
         }
         return count;
@@ -126,10 +126,10 @@ public class InventoryViewModel
 
     public void DestroyItem(string itemID)
     {
-        var item = data.items.Find(i => i.itemData.itemId == itemID);
+        var item = data.items.Find(i => i.itemID == itemID);
         if (item == null) return;
 
-        SetOccupiedSlot(item.itemData, item.position.x, item.position.y, false);
+        SetOccupiedSlot(fishDatabase.GetByID(item.itemID), item.position.x, item.position.y, false);
         data.items.Remove(item);
         OnDestroyItem?.Invoke(item.position.x, item.position.y);
     }

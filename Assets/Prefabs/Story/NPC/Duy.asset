@@ -15,18 +15,65 @@ MonoBehaviour:
   npcID: duy
   displayName: Duy
   dialoguePool:
-  - dialogue: {fileID: 11400000, guid: 2ee66c804674e494d94cdce01ed5a214, type: 2}
-    priority: 1
-    oneTimeOnly: 1
+  - dialogue: {fileID: 11400000, guid: 84ab6bb0de2792647afa1d7c78dd7c36, type: 2}
+    priority: 0
+    oneTimeOnly: 0
     conditions: []
     editorNote: 
     checkType: 0
     checkQuestID: 
     checkStep: 0
-  - dialogue: {fileID: 11400000, guid: 84ab6bb0de2792647afa1d7c78dd7c36, type: 2}
-    priority: 0
+  - dialogue: {fileID: 11400000, guid: 2ee66c804674e494d94cdce01ed5a214, type: 2}
+    priority: 1
+    oneTimeOnly: 1
+    conditions:
+    - type: 4
+      key: quest_1
+      value: 0
+    editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 80a18a456535a6c4689f24a53c1a6530, type: 2}
+    priority: 20
+    oneTimeOnly: 1
+    conditions:
+    - type: 5
+      key: quest_2
+      value: 0
+    editorNote: 
+    checkType: 2
+    checkQuestID: quest_2
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 2557fe39db55d824ab0435a067e1eb37, type: 2}
+    priority: 10
     oneTimeOnly: 0
-    conditions: []
+    conditions:
+    - type: 5
+      key: quest_2
+      value: 0
+    editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 3965d28b26c0b5c44a936579a76a1ca4, type: 2}
+    priority: 20
+    oneTimeOnly: 1
+    conditions:
+    - type: 5
+      key: quest_3
+      value: 0
+    editorNote: 
+    checkType: 2
+    checkQuestID: quest_3
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 1e476cce57859f944ab2ddb81a437558, type: 2}
+    priority: 10
+    oneTimeOnly: 0
+    conditions:
+    - type: 5
+      key: quest_3
+      value: 0
     editorNote: 
     checkType: 0
     checkQuestID: 

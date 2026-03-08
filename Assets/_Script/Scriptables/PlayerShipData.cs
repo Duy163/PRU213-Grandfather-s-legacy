@@ -37,7 +37,7 @@ public class PlayerShipData
         idleDrag = 2f;
 
 
-        position = Vector3.zero;
+        position = new Vector3(150, 0, 60);
         rotation = Quaternion.identity;
         currentSpeed = 0f;
         shipDurability = 100f;

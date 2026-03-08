@@ -18,9 +18,9 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 2ad0cd8c8c7e74d44b7dcd9f11989038, type: 3}
   itemShape: {fileID: 11400000, guid: 4d15944d8b9c75242be9f05b529c2927, type: 2}
   weight: 10
-  value: 200
-  MAX_WEIGHT: 50
-  MAX_VALUE: 1000
+  value: 50
+  MAX_WEIGHT: 10
+  MAX_VALUE: 500
   schoolSize: 4
   fishType: 0
   timeType: 0

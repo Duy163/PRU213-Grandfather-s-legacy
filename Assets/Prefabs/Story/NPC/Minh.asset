@@ -15,14 +15,6 @@ MonoBehaviour:
   npcID: minh
   displayName: Minh
   dialoguePool:
-  - dialogue: {fileID: 11400000, guid: 2b28bccf12869444397b257edd270019, type: 2}
-    priority: 1
-    oneTimeOnly: 1
-    conditions: []
-    editorNote: 
-    checkType: 0
-    checkQuestID: 
-    checkStep: 0
   - dialogue: {fileID: 11400000, guid: fb130b9a17d62e64e8e6fac7946b0401, type: 2}
     priority: 0
     oneTimeOnly: 0
@@ -31,23 +23,56 @@ MonoBehaviour:
     checkType: 0
     checkQuestID: 
     checkStep: 0
-  - dialogue: {fileID: 11400000, guid: 86551c238f89fc14a8895df18db53212, type: 2}
+  - dialogue: {fileID: 11400000, guid: 2b28bccf12869444397b257edd270019, type: 2}
     priority: 10
-    oneTimeOnly: 0
+    oneTimeOnly: 1
+    conditions: []
+    editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 8d7af1582853e5d4eb4bf424f135230a, type: 2}
+    priority: 10
+    oneTimeOnly: 1
     conditions:
     - type: 6
-      key: minh_spend_money
+      key: quest_1
       value: 0
     editorNote: 
     checkType: 2
-    checkQuestID: minh_spend_money
+    checkQuestID: quest_1
     checkStep: 0
-  - dialogue: {fileID: 11400000, guid: 131e13e13a287674d8086da1c85928c4, type: 2}
+  - dialogue: {fileID: 11400000, guid: dadf0fca49aee2c4594caa5ae93b928b, type: 2}
     priority: 10
     oneTimeOnly: 0
     conditions:
     - type: 6
-      key: minh_spend_money
+      key: quest_1
+      value: 0
+    editorNote: 
+    checkType: 0
+    checkQuestID: quest_1
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: af8519460eeefc940aa8262b8e396c5d, type: 2}
+    priority: 20
+    oneTimeOnly: 1
+    conditions:
+    - type: 4
+      key: quest_3
+      value: 0
+    editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 894ad9080a1044c45b5e4d0d645f6823, type: 2}
+    priority: 30
+    oneTimeOnly: 1
+    conditions:
+    - type: 0
+      key: duy_finish
+      value: 0
+    - type: 0
+      key: tuan_finish
       value: 0
     editorNote: 
     checkType: 0
