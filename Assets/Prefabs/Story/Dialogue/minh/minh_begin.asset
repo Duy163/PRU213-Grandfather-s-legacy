@@ -31,22 +31,22 @@ MonoBehaviour:
     triggerQuestID: 
   - speakerName: Minh
     text: The brown house is where you can sell fish for money.
-    portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
+    portrait: {fileID: 21300000, guid: 28651a35b01d90a4c9825ddfa518bd48, type: 3}
     setFlagAfter: 
     triggerQuestID: 
   - speakerName: Minh
-    text: The dock lets you save your location and skip time.
-    portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
+    text: The dock lets you save your location and save time.
+    portrait: {fileID: 21300000, guid: 497776c04cf899241a836065b2b3a850, type: 3}
     setFlagAfter: 
     triggerQuestID: 
   - speakerName: Minh
     text: "Out on the sea, you\u2019ll see swirling waters."
-    portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
+    portrait: {fileID: 21300000, guid: 74dba12255a95ca4ca2cdfa50df75b20, type: 3}
     setFlagAfter: 
     triggerQuestID: 
   - speakerName: Minh
     text: Those are fishing spots.
-    portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
+    portrait: {fileID: 21300000, guid: 74dba12255a95ca4ca2cdfa50df75b20, type: 3}
     setFlagAfter: 
     triggerQuestID: 
   - speakerName: Minh

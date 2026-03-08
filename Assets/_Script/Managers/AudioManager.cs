@@ -39,4 +39,24 @@ public class AudioManager : Singleton<AudioManager>
 
         SFXSource.PlayOneShot(temp);
     }
+
+    public void ChangeVolumeMusic(float value)
+    {
+        musicSource.volume = value;
+    }
+
+    public void ChangeVolumeSFX(float value)
+    {
+        SFXSource.volume = value;
+    }
+
+    public float GetVolumeMusic()
+    {
+        return musicSource.volume;
+    }
+
+    public float GetVolumeSFX()
+    {
+        return SFXSource.volume;
+    }
 }

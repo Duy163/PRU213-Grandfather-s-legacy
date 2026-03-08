@@ -8,6 +8,7 @@ public static class InputEvent
     public static event Action<bool> OnCameraRotate;
     public static event Action OnInteractPressed;
     public static event Action OnOpenInventoryPressed;
+    public static event Action OnOpenSettingPressed;
 
     // Fishing
     public static event Action OnCatchFishPressed;
@@ -23,6 +24,8 @@ public static class InputEvent
     // Dock
     public static event Action OnCloseDockPressed;
 
+    //Setting
+    public static event Action OnCloseSettingPressed;
 
     public static event Action OnRotateItemPressed;
     public static event Action OnRemoveItemPressed;
@@ -35,6 +38,7 @@ public static class InputEvent
     internal static void TriggerCameraRotate(bool isPressed) => OnCameraRotate?.Invoke(isPressed);
     internal static void TriggerInteract() => OnInteractPressed?.Invoke();
     internal static void TriggerOpenInventory() => OnOpenInventoryPressed?.Invoke();
+    internal static void TriggerOpenSetting() => OnOpenSettingPressed?.Invoke();
 
     // Cargo
     internal static void TriggerCloseInventory() => OnCloseInventoryPressed?.Invoke();
@@ -51,6 +55,9 @@ public static class InputEvent
 
     // Dock
     internal static void TriggerCloseDock() => OnCloseDockPressed?.Invoke();
+
+    // Setting
+    internal static void TriggerCloseSetting() => OnCloseSettingPressed?.Invoke();
 
     internal static void TriggerRotateItem() => OnRotateItemPressed?.Invoke();
     internal static void TriggerRemoveItem() => OnRemoveItemPressed?.Invoke();
