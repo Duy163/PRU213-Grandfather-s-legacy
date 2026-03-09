@@ -10,6 +10,7 @@ public class InputManager : Singleton<InputManager>
     private InputActionMap a_cargo;
     private InputActionMap a_dock;
     private InputActionMap a_setting;
+    private InputActionMap a_ending;
 
     private InputAction m_Move;
     private InputAction m_Look;
@@ -53,6 +54,7 @@ public class InputManager : Singleton<InputManager>
         a_cargo = inputActions.FindActionMap("Cargo", true);
         a_dock = inputActions.FindActionMap("Dock", true);
         a_setting = inputActions.FindActionMap("Setting", true);
+        a_ending = inputActions.FindActionMap("Ending", true);
     }
 
     void InitializeActions()
@@ -133,6 +135,7 @@ public class InputManager : Singleton<InputManager>
         a_cargo.Disable();
         a_dock.Disable();
         a_setting.Disable();
+        a_ending.Disable();
         Debug.Log("[Input] Ship mode");
     }
 
@@ -144,6 +147,7 @@ public class InputManager : Singleton<InputManager>
         a_cargo.Disable();
         a_dock.Disable();
         a_setting.Disable();
+        a_ending.Disable();
         Debug.Log("[Input] Fishing mode");
     }
 
@@ -155,6 +159,7 @@ public class InputManager : Singleton<InputManager>
         a_dock.Disable();
         a_cargo.Disable();
         a_setting.Disable();
+        a_ending.Disable();
         Debug.Log("[Input] Dialogue mode");
     }
 
@@ -166,6 +171,7 @@ public class InputManager : Singleton<InputManager>
         a_dock.Disable();
         a_cargo.Enable();
         a_setting.Disable();
+        a_ending.Disable();
         Debug.Log("[Input] Cargo mode");
     }
 
@@ -177,6 +183,7 @@ public class InputManager : Singleton<InputManager>
         a_cargo.Disable();
         a_dock.Enable();
         a_setting.Disable();
+        a_ending.Disable();
         Debug.Log("[Input] Dock mode");
     }
 
@@ -188,7 +195,20 @@ public class InputManager : Singleton<InputManager>
         a_cargo.Disable();
         a_dock.Disable();
         a_setting.Enable();
+        a_ending.Disable();
         Debug.Log("[Input] Setting mode");
+    }
+
+    public void EnableEnding()
+    {
+        a_ship.Disable();
+        a_fishing.Disable();
+        a_dialogue.Disable();
+        a_cargo.Disable();
+        a_dock.Disable();
+        a_setting.Disable();
+        a_ending.Enable();
+        Debug.Log("[Input] Ending mode");
     }
     public Vector2 GetMovement()
     {

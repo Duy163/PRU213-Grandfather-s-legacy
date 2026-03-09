@@ -35,4 +35,13 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public static void ResetSingleton()
+    {
+        if (_instance != null)
+        {
+            Destroy(_instance.gameObject);
+            _instance = null;
+        }
+    }
 }

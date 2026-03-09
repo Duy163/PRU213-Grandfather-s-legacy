@@ -126,22 +126,6 @@ public class NPCController : MonoBehaviour
         return GetDialogue(cd.dialogue.dialogueID);
     }
 
-    // private DialogueData ResolveByObjectives(ConditionalDialogue cd)
-    // {
-    //     var quest = QuestManager.Instance.GetActiveQuest(cd.checkQuestID);
-    //     if (quest == null)
-    //         return GetDialogue(cd.dialogue.dialogueID);
-
-    //     bool allDone = quest.objectives.TrueForAll(o => o.isCompleted);
-
-    //     if (!allDone)
-    //         return GetDialogue(cd.dialogue.dialogueID + "_reminder");
-
-    //     QuestManager.Instance.ReportProgress(ObjectiveType.TalkToNPC, data.npcID);
-
-    //     return GetDialogue(cd.dialogue.dialogueID);
-    // }
-
     private DialogueData GetDialogue(string dialogueID)
         => database.allDialogues.Find(d => d.dialogueID == dialogueID);
 }

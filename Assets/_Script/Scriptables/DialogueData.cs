@@ -19,4 +19,5 @@ public class DialogueLine
     // Hành động sau khi nói dòng này
     public string setFlagAfter;      // bật flag
     public string triggerQuestID;    // mở quest
+    public string triggerID;
 }

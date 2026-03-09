@@ -1657,6 +1657,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Ending",
+            "id": "29aad65c-efd0-4d07-ac05-fcb14bc98a7d",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [

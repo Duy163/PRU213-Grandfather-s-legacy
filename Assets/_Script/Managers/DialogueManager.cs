@@ -88,6 +88,10 @@ public class DialogueManager : Singleton<DialogueManager>
 
         if (!string.IsNullOrEmpty(line.triggerQuestID))
             QuestManager.Instance.TryStartQuest(line.triggerQuestID);
+
+        if (!string.IsNullOrEmpty(line.triggerID) && line.triggerID.Equals("normal_ending"))
+            TriggerManager.Instance.ShowEnding();
+
     }
 
     // ── KẾT THÚC DIALOGUE ─────────────────────────────

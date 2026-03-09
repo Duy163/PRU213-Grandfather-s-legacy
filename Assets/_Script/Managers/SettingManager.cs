@@ -51,6 +51,21 @@ public class SettingManager : Singleton<SettingManager>
     public void QuitGame()
     {
         DataManager.Instance.Save();
+        WorldDataManager.ResetSingleton();
+        InputManager.ResetSingleton();
+        AudioManager.ResetSingleton();
+        CameraManager.ResetSingleton();
+        CurrencyManager.ResetSingleton();
+        DataManager.ResetSingleton();
+        DialogueManager.ResetSingleton();
+        FishingManager.ResetSingleton();
+        InventoryManager.ResetSingleton();
+        NPCManager.ResetSingleton();
+        QuestManager.ResetSingleton();
+        TriggerManager.ResetSingleton();
+
+
         SceneManager.LoadScene("StartMenu");
+        SettingManager.ResetSingleton();
     }
 }

@@ -19,18 +19,22 @@ MonoBehaviour:
     portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
     setFlagAfter: 
     triggerQuestID: 
+    triggerID: 
   - speakerName: Minh
     text: To recognize your contributions,
     portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
     setFlagAfter: 
     triggerQuestID: 
+    triggerID: 
   - speakerName: Minh
     text: we will honor you as an honorary citizen of this island.
     portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
     setFlagAfter: 
     triggerQuestID: 
+    triggerID: 
   - speakerName: Minh
     text: "Let\u2019s work together to develop this island."
     portrait: {fileID: 21300000, guid: fc8cf6c5533875a46ad8452f2f2db892, type: 3}
     setFlagAfter: 
     triggerQuestID: 
+    triggerID: normal_ending
