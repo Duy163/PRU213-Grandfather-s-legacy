@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0184bb0e6d60d664fb460ef3950717ee, type: 3}
+  m_Name: mayor_idle
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  dialogueID: mayor_idle
+  lines:
+  - speakerName: "Th\u1ECB tr\u01B0\u1EDFng"
+    text: ..Uhm
+    portrait: {fileID: 21300000, guid: 67a9ebef19696f842a9101128484f715, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 

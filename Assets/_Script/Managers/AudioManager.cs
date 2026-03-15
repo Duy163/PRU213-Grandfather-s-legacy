@@ -8,6 +8,7 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioSource SFXSource;
 
     [Header("------------------------------------")]
+    public AudioClip menu;
     public AudioClip background;
     public AudioClip catchSuccess;
     public AudioClip catchFail;
@@ -21,7 +22,20 @@ public class AudioManager : Singleton<AudioManager>
 
     void Start()
     {
-        musicSource.clip = background;
+        PlayMusic("menu");
+    }
+
+    public void PlayMusic(string nameMusic)
+    {
+        switch (nameMusic)
+        {
+            case "background":
+                musicSource.clip = background;
+                break;
+            case "menu":
+                musicSource.clip = menu;
+                break;
+        }
         musicSource.Play();
     }
 

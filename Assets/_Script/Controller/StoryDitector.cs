@@ -1,19 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoryDirector : Singleton<StoryDirector>
+public class StoryDirector : MonoBehaviour
 {
     [SerializeField] private StoryDatabase database;
 
     private ProgressionData progression => DataManager.Instance.Progression;
     private WorldStateManager worldState => DataManager.Instance.WorldState;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        if (database == null)
-            Debug.LogError("StoryDirector: No StoryDatabase assigned!");
-    }
 
     // ── KIỂM TRA ĐIỀU KIỆN ────────────────────────────
     public bool CheckConditions(List<StoryCondition> conditions)

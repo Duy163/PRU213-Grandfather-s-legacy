@@ -2,20 +2,16 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class DialogueManager : Singleton<DialogueManager>
+public class DialogueManager : MonoBehaviour
 {
 
+    [SerializeField] private QuestManager questManager;
     [Header("UI")]
     [SerializeField] private DialogueView dialogueView; // Tham chiếu đến DialogueView
 
     private DialogueData current;
     private int lineIndex;
     private bool isPlaying;
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
 
     void OnEnable()
     {
@@ -82,7 +78,7 @@ public class DialogueManager : Singleton<DialogueManager>
         }
 
         if (!string.IsNullOrEmpty(line.triggerQuestID))
-            QuestManager.Instance.TryStartQuest(line.triggerQuestID);
+            questManager.TryStartQuest(line.triggerQuestID);
 
         if (!string.IsNullOrEmpty(line.triggerID))
             TriggerManager.Instance.TryTrigger(line.triggerID);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Squid
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemId: squid
-  itemName: Squid
+  itemName: "M\u1EF1c"
   description: 
   icon: {fileID: 21300000, guid: 19b5b395df0984644bc42592fc8ea261, type: 3}
   itemShape: {fileID: 11400000, guid: 4de0c9ed06e201441a63db0d1875c3ba, type: 2}

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74b26a43ee0ae3d40b7bd9be304ed915, type: 3}
+  m_Name: Fisher
+  m_EditorClassIdentifier: Assembly-CSharp::NPCData
+  npcID: fisher
+  displayName: "Ng\u01B0 d\xE2n"
+  dialoguePool:
+  - dialogue: {fileID: 11400000, guid: e57b9f1f929200c4ab41e8265f2235b3, type: 2}
+    priority: 0
+    oneTimeOnly: 0
+    conditions: []
+    editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0

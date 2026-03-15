@@ -4,11 +4,7 @@ public class ShipController : MonoBehaviour
 {
 
     // ================= State =============================
-    PlayerShipData playerShipData;
-
-    float acceleration;
-    float maxSpeed;
-    float turnStrength;
+    [SerializeField] ShipManager shipManager;
 
     float waterDrag;
     float idleDrag;
@@ -32,10 +28,6 @@ public class ShipController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0, -0.5f, 0);
-
-        playerShipData = DataManager.Instance.currentGameData.playerShipData;
-
-        LoadShipData();
     }
 
     void FixedUpdate()
@@ -46,15 +38,15 @@ public class ShipController : MonoBehaviour
 
         // Di chuyển
         if (v != 0)
-            rb.AddForce(transform.forward * v * acceleration, ForceMode.Acceleration);
+            rb.AddForce(transform.forward * v * shipManager.playerShipData.acceleration, ForceMode.Acceleration);
 
         // Giới hạn tốc độ
-        if (rb.linearVelocity.magnitude > maxSpeed)
-            rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
+        if (rb.linearVelocity.magnitude > shipManager.playerShipData.maxSpeed)
+            rb.linearVelocity = rb.linearVelocity.normalized * shipManager.playerShipData.maxSpeed;
 
         // Xoay
         if (rb.linearVelocity.magnitude > 0.5f)
-            rb.AddTorque(Vector3.up * h * turnStrength, ForceMode.Acceleration);
+            rb.AddTorque(Vector3.up * h * shipManager.playerShipData.turnStrength, ForceMode.Acceleration);
 
         // Chống trôi ngang
         Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
@@ -82,26 +74,26 @@ public class ShipController : MonoBehaviour
 
     // ================= Initialization ====================
 
-    private void LoadShipData()
+    public void LoadShipData()
     {
         var transform = GetComponent<Transform>();
         Vector3 temp = transform.position;
+        Vector3 rot = new Vector3(0, 0, 0);
 
-        temp.x = playerShipData.position.x;
-        temp.z = playerShipData.position.z;
+        temp.x = shipManager.playerShipData.position.x;
+        temp.z = shipManager.playerShipData.position.z;
+        rot.y = shipManager.playerShipData.rotation.y;
 
         transform.position = temp;
+        transform.eulerAngles = rot;
 
-        acceleration = playerShipData.acceleration;
-        maxSpeed = playerShipData.maxSpeed;
-        turnStrength = playerShipData.turnStrength;
-
-        waterDrag = playerShipData.waterDrag;
-        idleDrag = playerShipData.idleDrag;
+        waterDrag = shipManager.playerShipData.waterDrag;
+        idleDrag = shipManager.playerShipData.idleDrag;
     }
 
     private void ToggerLamp()
     {
-        lamp.enabled = !lamp.enabled;
+        if (shipManager.playerShipData.hasLamp)
+            lamp.enabled = !lamp.enabled;
     }
 }

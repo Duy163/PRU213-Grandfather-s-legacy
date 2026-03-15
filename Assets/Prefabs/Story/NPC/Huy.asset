@@ -24,9 +24,34 @@ MonoBehaviour:
     checkQuestID: 
     checkStep: 0
   - dialogue: {fileID: 11400000, guid: 6272fdcab81cf7a41bdc7f4f77642ab8, type: 2}
-    priority: 1
+    priority: 10
     oneTimeOnly: 1
-    conditions: []
+    conditions:
+    - type: 0
+      key: request_north_island
+      value: 0
+    editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 52364262d33371c4682e77332623b233, type: 2}
+    priority: 20
+    oneTimeOnly: 1
+    conditions:
+    - type: 5
+      key: quest_6
+      value: 0
+    editorNote: 
+    checkType: 2
+    checkQuestID: quest_6
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 5d8688ec5d8133f489908ccbc44fae85, type: 2}
+    priority: 8
+    oneTimeOnly: 0
+    conditions:
+    - type: 5
+      key: quest_6
+      value: 0
     editorNote: 
     checkType: 0
     checkQuestID: 

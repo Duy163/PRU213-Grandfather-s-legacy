@@ -15,7 +15,8 @@ MonoBehaviour:
   dialogueID: huy_idle
   lines:
   - speakerName: Huy
-    text: 'nhin con cac '
+    text: 'uhm hello '
     portrait: {fileID: 21300000, guid: ebd7685385771194594c8b52b7c5e292, type: 3}
     setFlagAfter: 
     triggerQuestID: 
+    triggerID: 

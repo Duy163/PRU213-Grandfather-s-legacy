@@ -9,13 +9,11 @@ public abstract class BasePanel : MonoBehaviour
     public virtual void Show()
     {
         root.SetActive(true);
-        Debug.Log($"[UI] Show: {gameObject.name}");
     }
 
     public virtual void Hide()
     {
         root.SetActive(false);
-        Debug.Log($"[UI] Hide: {gameObject.name}");
     }
 
     public void Toggle()

@@ -3,15 +3,16 @@ using UnityEngine.UI;
 
 public class SettingView : BasePanel
 {
+    [SerializeField] private SettingManager settingManager;
     [SerializeField] private Slider sliderMusic;
     [SerializeField] private Slider sliderSFX;
     public void SetVolumeMusic()
     {
-        SettingManager.Instance.ChangeMusic(sliderMusic.value);
+        settingManager.ChangeMusic(sliderMusic.value);
     }
     public void SetVolumeSFX()
     {
-        SettingManager.Instance.ChangeSFX(sliderSFX.value);
+        settingManager.ChangeSFX(sliderSFX.value);
     }
 
     public void Load(float music, float sfx)
@@ -21,6 +22,7 @@ public class SettingView : BasePanel
     }
     public void QuitButton()
     {
-        SettingManager.Instance.QuitGame();
+        AudioManager.Instance.PlayMusic("menu");
+        settingManager.ReturnMenu();
     }
 }

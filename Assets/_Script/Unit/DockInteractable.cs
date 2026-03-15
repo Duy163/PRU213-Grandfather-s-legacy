@@ -78,7 +78,7 @@ public class DockInteractable : MonoBehaviour, IInteractable
             ship.rotation = dockPoint.rotation;
             isDocking = false;
             DataManager.Instance.currentGameData.playerShipData.position = ship.position;
-            DataManager.Instance.currentGameData.playerShipData.rotation = ship.rotation;
+            DataManager.Instance.currentGameData.playerShipData.rotation = ship.eulerAngles;
             DataManager.Instance.Save();
             Debug.Log($"Ship docked at {dockName}. Position saved.");
         }

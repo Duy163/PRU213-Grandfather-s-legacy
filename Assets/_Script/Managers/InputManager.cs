@@ -140,7 +140,6 @@ public class InputManager : Singleton<InputManager>
         a_dock.Disable();
         a_setting.Disable();
         a_ending.Disable();
-        Debug.Log("[Input] Ship mode");
     }
 
     public void EnableFishing()
@@ -152,7 +151,6 @@ public class InputManager : Singleton<InputManager>
         a_dock.Disable();
         a_setting.Disable();
         a_ending.Disable();
-        Debug.Log("[Input] Fishing mode");
     }
 
     public void EnableDialogue()
@@ -164,7 +162,6 @@ public class InputManager : Singleton<InputManager>
         a_cargo.Disable();
         a_setting.Disable();
         a_ending.Disable();
-        Debug.Log("[Input] Dialogue mode");
     }
 
     public void EnableCargo()
@@ -176,7 +173,6 @@ public class InputManager : Singleton<InputManager>
         a_cargo.Enable();
         a_setting.Disable();
         a_ending.Disable();
-        Debug.Log("[Input] Cargo mode");
     }
 
     public void EnableDock()
@@ -188,7 +184,6 @@ public class InputManager : Singleton<InputManager>
         a_dock.Enable();
         a_setting.Disable();
         a_ending.Disable();
-        Debug.Log("[Input] Dock mode");
     }
 
     public void EnableSetting()
@@ -200,7 +195,6 @@ public class InputManager : Singleton<InputManager>
         a_dock.Disable();
         a_setting.Enable();
         a_ending.Disable();
-        Debug.Log("[Input] Setting mode");
     }
 
     public void EnableEnding()
@@ -212,7 +206,6 @@ public class InputManager : Singleton<InputManager>
         a_dock.Disable();
         a_setting.Disable();
         a_ending.Enable();
-        Debug.Log("[Input] Ending mode");
     }
     public Vector2 GetMovement()
     {

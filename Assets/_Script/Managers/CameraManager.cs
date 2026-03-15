@@ -1,7 +1,7 @@
 using UnityEngine;
 using Unity.Cinemachine;
 
-public class CameraManager : Singleton<CameraManager>
+public class CameraManager : MonoBehaviour
 {
     [Header("Cinemachine")]
     [SerializeField] private CinemachineCamera normalCamera;
@@ -14,9 +14,8 @@ public class CameraManager : Singleton<CameraManager>
 
     private CinemachineBrain brain;
 
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
         brain = Camera.main.GetComponent<CinemachineBrain>();
 
         SetNormalView();
