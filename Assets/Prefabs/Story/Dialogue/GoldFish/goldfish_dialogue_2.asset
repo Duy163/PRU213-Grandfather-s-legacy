@@ -18,12 +18,14 @@ MonoBehaviour:
     text: "\xD4ng l\xE3o\u2026 ta th\u1EA5y \xF4ng \u0111\xE3 l\xE0m quen v\u1EDBi
       v\xF9ng bi\u1EC3n \u1EDF V\u1ECBnh Xanh."
     portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 74eb813c18922b1468a60e24549a9457, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
   - speakerName: "C\xE1 v\xE0ng"
     text: "\xD4ng \u0111\xE3 b\u1EAFt \u0111\u01B0\u1EE3c kh\xE1 nhi\u1EC1u c\xE1."
     portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 55619761b10e695499e0987b51b8c124, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -31,6 +33,7 @@ MonoBehaviour:
     text: "\u0110\xFAng v\u1EADy. Nh\u1EDD v\xF9ng bi\u1EC3n \u0111\xF3 m\xE0 ta
       c\xF3 th\u1EC3 ki\u1EBFm \u0111\u01B0\u1EE3c \xEDt ti\u1EC1n."
     portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 8300000, guid: d340a90a443b5224b8c42e65676df1ba, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -38,6 +41,7 @@ MonoBehaviour:
     text: "Nh\u01B0ng \u0111\xF3 ch\u1EC9 l\xE0 n\u01A1i d\xE0nh cho nh\u1EEFng ng\u01B0
       d\xE2n m\u1EDBi b\u1EAFt \u0111\u1EA7u."
     portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 99804dc077cbfca43a6f0a57ed3f1edc, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -45,12 +49,14 @@ MonoBehaviour:
     text: "C\xF3 nh\u1EEFng v\xF9ng bi\u1EC3n kh\xE1c nhi\u1EC1u c\xE1 h\u01A1n\u2026
       nh\u01B0ng c\u0169ng kh\xF3 \u0111\xE1nh b\u1EAFt h\u01A1n."
     portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 33d2ccee70555f14b8d2df7db5c6fb38, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
   - speakerName: "\xD4ng L\xE3o"
     text: "V\u1EADy ta n\xEAn \u0111i \u0111\xE2u ti\u1EBFp theo?"
     portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 8300000, guid: 38bd9ad55384dfb408df6cdb986b0097, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -58,6 +64,7 @@ MonoBehaviour:
     text: "Ph\xEDa B\u1EAFc c\u1EE7a v\xF9ng bi\u1EC3n n\xE0y c\xF3 m\u1ED9t n\u01A1i
       g\u1ECDi l\xE0 \u0110\u1EA7m Tuy\u1EBFt."
     portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 952ae6bc39fde134b8b7be85da6f90a8, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -65,6 +72,7 @@ MonoBehaviour:
     text: "Nh\u01B0ng trong \u0111\u1EA7m c\xF3 nhi\u1EC1u lo\u1EA1i c\xE1 kh\xE1c
       m\xE0 \xF4ng ch\u01B0a t\u1EEBng th\u1EA5y"
     portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: e0d6f3a037162504584f9e345dce42fe, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -72,6 +80,7 @@ MonoBehaviour:
     text: "Tr\xEAn \u0111\u1EA3o c\xF3 m\u1ED9t ng\u01B0\u1EDDi s\u1ED1ng m\u1ED9t
       m\xECnh"
     portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 5fd861e239da5784e94b0fd0f63cdf38, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -79,24 +88,28 @@ MonoBehaviour:
     text: "H\xE3y t\xECm \xF4ng \u1EA5y. \xD4ng \u1EA5y bi\u1EBFt r\xF5 v\xF9ng n\u01B0\u1EDBc
       \u1EDF \u0111\xF3."
     portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 049353a49bc698d4d952bdaeec644960, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
   - speakerName: "\xD4ng L\xE3o"
     text: "Ta hi\u1EC3u r\u1ED3i."
     portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 8300000, guid: a4788acdc450e034caa30f49080faf29, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
   - speakerName: "C\xE1 v\xE0ng"
     text: "Chu\u1EA9n b\u1ECB t\u1ED1t tr\u01B0\u1EDBc khi \u0111i."
     portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: a0de097bc38a08246b97ebde07733e96, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
   - speakerName: "C\xE1 v\xE0ng"
     text: "V\xF9ng n\u01B0\u1EDBc \u1EDF \u0111\xF3 s\xE2u v\xE0 kh\xF3 c\xE2u h\u01A1n."
     portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 31c53b6be6ee2a54dacf1bffc25fd895, type: 3}
     setFlagAfter: ready_quest_2
     triggerQuestID: 
     triggerID: village
