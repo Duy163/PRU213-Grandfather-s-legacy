@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0184bb0e6d60d664fb460ef3950717ee, type: 3}
+  m_Name: goldfish_dialogue_1
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  dialogueID: goldfish_dialogue_1
+  lines:
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "Xin \xF4ng h\xE3y th\u1EA3 ta v\u1EC1 bi\u1EC3n\u2026"
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 4a09e6cc185e74541a667b46bacf5bca, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "\xD4ng L\xE3o"
+    text: "Tr\u1EDDi \u0111\u1EA5t\u2026 c\xE1 bi\u1EBFt n\xF3i sao?"
+    portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 8300000, guid: d8f92c03b90dcfb4c955be92bb704886, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "Ta kh\xF4ng ph\u1EA3i c\xE1 b\xECnh th\u01B0\u1EDDng. Ta l\xE0 c\xE1 v\xE0ng
+      c\u1EE7a \u0111\u1EA1i d\u01B0\u01A1ng"
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 67a276ec729bacc42bf3166c5543d650, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "\xD4ng L\xE3o"
+    text: "Ta ch\u1EC9 l\xE0 m\u1ED9t ng\u01B0 d\xE2n ngh\xE8o\u2026 ta b\u1EAFt
+      \u0111\u01B0\u1EE3c ng\u01B0\u01A1i c\u0169ng ch\u1EC9 \u0111\u1EC3 b\xE1n
+      l\u1EA5y \xEDt ti\u1EC1n."
+    portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 8300000, guid: f9f448e2d8e2df24cbd673f48cba8609, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "\"Ta bi\u1EBFt \xF4ng l\xE0 ng\u01B0\u1EDDi l\u01B0\u01A1ng thi\u1EC7n.\n
+      N\u1EBFu \xF4ng th\u1EA3 ta, ta s\u1EBD gi\xFAp \xF4ng.\""
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: bedf629ff7d23db45949d60e23234637, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "\xD4ng L\xE3o"
+    text: ...
+    portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 0}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "\xD4ng L\xE3o"
+    text: "Ta kh\xF4ng c\u1EA7n \u0111i\u1EC1u \u01B0\u1EDBc. Ta ch\u1EC9 mu\u1ED1n
+      c\xF3 \u0111\u1EE7 c\xE1 \u0111\u1EC3 s\u1ED1ng qua ng\xE0y."
+    portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 8300000, guid: 1e9d26e7d9f5e934f930ba983732e061, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "Ta kh\xF4ng ban \u0111i\u1EC1u \u01B0\u1EDBc nh\u01B0 trong truy\u1EC1n
+      thuy\u1EBFt."
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 71c17c7c7ef7dc249839f172bb13cfaf, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "Nh\u01B0ng ta c\xF3 th\u1EC3 gi\xFAp \xF4ng t\xECm \u0111\u1EBFn nh\u1EEFng
+      v\xF9ng bi\u1EC3n gi\xE0u c\xE1."
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: c0eeec7eecb22334c82ff23a3681e197, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "\xD4ng L\xE3o"
+    text: "V\u1EADy ta ph\u1EA3i l\xE0m g\xEC?"
+    portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 8300000, guid: 211ea97e415f8e342aa71111716d49d1, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "\u0110\u1EA1i d\u01B0\u01A1ng \u0111ang g\u1EB7p r\u1EAFc r\u1ED1i."
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: fd498060097e8924f9f7701d1c7c530a, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "Nhi\u1EC1u h\xF2n \u0111\u1EA3o c\u1EE7a ng\u01B0 d\xE2n \u0111ang g\u1EB7p
+      kh\xF3 kh\u0103n."
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 4ec6bf1304e6fbb4bac69a5f6a0e2bbb, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "N\u1EBFu \xF4ng gi\xFAp h\u1ECD gi\u1EA3i quy\u1EBFt v\u1EA5n \u0111\u1EC1,"
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 89ded46dc2bc28947989de95dffb2a9a, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "ta s\u1EBD ch\u1EC9 cho \xF4ng nh\u1EEFng v\xF9ng bi\u1EC3n \u0111\u1EA7y
+      c\xE1."
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 735d9ffdddf1d704d8d5a254e31b3545, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "H\xF2n \u0111\u1EA3o \u0111\u1EA7u ti\xEAn n\u1EB1m \u1EDF ph\xEDa \u0110\xF4ng
+      c\u1EE7a v\u1ECBnh n\xE0y."
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: e1c8231d71a0e4b49b9fe9b7463c1791, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "N\u01A1i \u0111\xE2y c\xF3 nhi\u1EC1u c\xE1 s\u1EBD gi\xFAp \xF4ng c\xF3
+      th\u1EC3 ki\u1EBFm \u0111\u01B0\u1EE3c nhi\u1EC1u ti\u1EC1n."
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 79a9834f0728dc1468fa9188992e5e2c, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "\u1EDE \u0111\xF3 s\u1EBD c\xF3 ng\u01B0 d\xE2n giao cho \xF4ng nhi\u1EC7m
+      v\u1EE5 v\xE0 \xF4ng h\xE3y ho\xE0n th\xE0nh nhi\u1EC7m v\u1EE5 c\u1EE7a h\u1ECD."
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: fe432d8425398284cb90b94abc95bb8e, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "C\xE1 v\xE0ng"
+    text: "Sau \u0111\xF3 \xF4ng s\u1EBD nh\u1EADn \u0111\u01B0\u1EE3c ti\u1EC1n
+      v\xE0 v\u1EADt ph\u1EA9m."
+    portrait: {fileID: 21300000, guid: f4b768a7b2ec0014cb896764dc4ec3ef, type: 3}
+    clip: {fileID: 8300000, guid: 893b7327c6f1fe949a317cd98844cd05, type: 3}
+    setFlagAfter: ready_quest_1
+    triggerQuestID: 
+    triggerID: fisher

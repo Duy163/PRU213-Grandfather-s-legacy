@@ -11,7 +11,7 @@ public class ShopInteractable : MonoBehaviour, IInteractable
     }
     public string GetInteractPrompt()
     {
-        return "Hold [F] Open Shop";
+        return "Giữ [F] mở shop";
     }
     public void Interact()
     {

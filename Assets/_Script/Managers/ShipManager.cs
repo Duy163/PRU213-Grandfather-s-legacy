@@ -9,17 +9,17 @@ public class ShipManager : MonoBehaviour
 
     private int maxSpeedMaxLv = 5;
     private float maxSpeedPerLv = 20f;
-    private int maxSpeedPrice = 5000;
+    private int maxSpeedPrice = 1000;
 
     private int accelerationMaxLv = 5;
     private float accelerationPerLv = 10f;
-    private int accelerationPrice = 5000;
+    private int accelerationPrice = 1000;
 
     private int turnStrengthMaxLv = 5;
     private float turnStrengthPerLv = 0.5f;
-    private int turnStrengthPrice = 5000;
+    private int turnStrengthPrice = 1000;
 
-    private int lampPrice = 5000;
+    private int lampPrice = 500;
 
 
     void Start()

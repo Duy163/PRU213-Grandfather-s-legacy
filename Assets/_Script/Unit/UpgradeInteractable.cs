@@ -5,7 +5,7 @@ public class UpgradeInteractable : MonoBehaviour, IInteractable
     [SerializeField] ShipManager shipManager;
     public string GetInteractPrompt()
     {
-        return "Hold [F] Open Upgrade";
+        return "Giữ [F] mở nâng cấp";
     }
     public void Interact()
     {

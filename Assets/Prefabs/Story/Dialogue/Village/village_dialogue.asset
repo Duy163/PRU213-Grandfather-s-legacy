@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0184bb0e6d60d664fb460ef3950717ee, type: 3}
+  m_Name: village_dialogue
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  dialogueID: village_dialogue
+  lines:
+  - speakerName: "D\xE2n l\xE0ng"
+    text: "Ta hi\u1EBFm khi th\u1EA5y thuy\u1EC1n l\u1EA1 \u0111\u1EBFn n\u01A1i
+      n\xE0y."
+    portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "D\xE2n l\xE0ng"
+    text: "C\u1EADu \u0111\u1EBFn \u0111\xE2y \u0111\u1EC3 \u0111\xE1nh c\xE1 \xE0?"
+    portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "\xD4ng l\xE3o"
+    text: "\u0110\xFAng v\u1EADy. Ta nghe n\xF3i v\xF9ng n\u01B0\u1EDBc \u1EDF \u0111\xE2y
+      c\xF3 nhi\u1EC1u c\xE1."
+    portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "D\xE2n l\xE0ng"
+    text: "C\xF3 nhi\u1EC1u c\xE1 th\u1EADt\u2026 nh\u01B0ng kh\xF4ng d\u1EC5 b\u1EAFt
+      \u0111\xE2u."
+    portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "D\xE2n l\xE0ng"
+    text: "N\u1EBFu c\u1EADu mu\u1ED1n \u0111\xE1nh c\xE1 \u1EDF \u0111\xE2y, h\xE3y
+      th\u1EED ra v\xF9ng \u0111\u1EA7m ph\xEDa tr\u01B0\u1EDBc."
+    portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    setFlagAfter: 
+    triggerQuestID: 
+    triggerID: 
+  - speakerName: "D\xE2n l\xE0ng"
+    text: "\u1EDE \u0111\xF3 c\xF3 v\xE0i lo\u1EA1i c\xE1 m\xE0 v\xF9ng bi\u1EC3n
+      kh\xE1c kh\xF4ng c\xF3."
+    portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    setFlagAfter: 
+    triggerQuestID: quest_2
+    triggerID: hide

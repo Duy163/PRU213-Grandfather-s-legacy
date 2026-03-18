@@ -12,6 +12,15 @@ public class QuestManager : Singleton<QuestManager>
     {
         base.Awake();
     }
+
+    void Start()
+    {
+        if (progression.activeQuests.Count > 0)
+        {
+            questView.Show();
+            questView.SetContent(progression.activeQuests[0].questName);
+        }
+    }
     // ── MỞ QUEST ──────────────────────────────────────
     public bool TryStartQuest(string questID)
     {

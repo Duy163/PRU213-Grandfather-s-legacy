@@ -22,7 +22,6 @@ public class SettingView : BasePanel
     }
     public void QuitButton()
     {
-        AudioManager.Instance.PlayMusic("menu");
         settingManager.ReturnMenu();
     }
 }

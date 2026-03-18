@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: quest_2
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questID: quest_2
-  questName: Quest 2
+  questName: "C\xE2u 2 con l\u01B0\u01A1n"
   isMainQuest: 1
   nextQuestID: 
   prerequisiteQuestIDs: []
   steps:
-  - stepDescription: '10 mackerels '
+  - stepDescription: 
     objectives:
-    - description: 10 mackerels
+    - description: 
       type: 2
-      targetID: mackerel
-      targetAmount: 10
+      targetID: eel
+      targetAmount: 2

@@ -13,11 +13,13 @@ public class InteractionController : MonoBehaviour
     {
         InputEvent.OnInteractPressed -= OnInteractivePress;
         InputEvent.OnInteractPressed += OnInteractivePress;
+        StoryEvent.OnBeginDialogue += OnInteractivePress;
     }
 
     void OnDisable()
     {
         InputEvent.OnInteractPressed -= OnInteractivePress;
+        StoryEvent.OnBeginDialogue -= OnInteractivePress;
     }
 
     void Update()

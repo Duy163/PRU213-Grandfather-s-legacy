@@ -12,7 +12,7 @@ public class FishingSpotInteractable : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        return "Hold [F] Fishing";
+        return "Giữ [F] Câu cá";
     }
 
     public bool CanInteract()

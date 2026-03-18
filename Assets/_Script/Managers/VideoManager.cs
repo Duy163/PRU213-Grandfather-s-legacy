@@ -5,11 +5,14 @@ public class VideoManager : MonoBehaviour
 {
     [Header("------------------------------------")]
     [SerializeField] VideoPlayer videoPlayer;
-    [SerializeField] Camera camera;
 
     [Header("------------------------------------")]
     [SerializeField] VideoClip intro;
 
+
+    [SerializeField] GameObject worldPanel;
+    [SerializeField] GameObject playerPanel;
+    [SerializeField] GameObject mainPanel;
     void Start()
     {
 
@@ -28,18 +31,19 @@ public class VideoManager : MonoBehaviour
 
     public void PlayIntro()
     {
+        worldPanel.SetActive(false);
+        playerPanel.SetActive(false);
+        mainPanel.SetActive(false);
         videoPlayer.gameObject.SetActive(true);
-
+        InputManager.Instance.EnableEnding();
+        AudioManager.Instance.PauseMusic();
 
         StartCoroutine(PlayAfterEnable());
     }
 
     System.Collections.IEnumerator PlayAfterEnable()
     {
-        yield return new WaitForSeconds(1f); // Chờ 1 frame
-
-        Debug.Log("VideoPlayer enabled: " + videoPlayer.enabled);
-        Debug.Log("VideoPlayer GO active: " + videoPlayer.gameObject.activeSelf);
+        yield return new WaitForSeconds(0.1f); // Chờ 1 frame
 
         videoPlayer.clip = intro;
         videoPlayer.isLooping = false;
@@ -51,6 +55,12 @@ public class VideoManager : MonoBehaviour
 
     void OnVideoEnd(VideoPlayer vp)
     {
+        worldPanel.SetActive(true);
+        playerPanel.SetActive(true);
+        mainPanel.SetActive(true);
+        InputManager.Instance.EnableShip();
+        AudioManager.Instance.ContinueMusic();
         videoPlayer.gameObject.SetActive(false);
+        StoryEvent.OnBeginDialogue?.Invoke();
     }
 }

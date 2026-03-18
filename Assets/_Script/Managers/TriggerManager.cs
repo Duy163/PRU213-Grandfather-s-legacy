@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerManager : Singleton<TriggerManager>
@@ -6,10 +7,7 @@ public class TriggerManager : Singleton<TriggerManager>
     [SerializeField] private EndingView endingView;
     [SerializeField] private Billboard billboard;
 
-    [SerializeField] private Transform minh;
-    [SerializeField] private Transform duy;
-    [SerializeField] private Transform tuan;
-    [SerializeField] private Transform huy;
+    [SerializeField] List<NPCInteracttive> nPCs;
 
     protected override void Awake()
     {
@@ -18,9 +16,9 @@ public class TriggerManager : Singleton<TriggerManager>
 
     void Start()
     {
-        if (DataManager.Instance.WorldState.IsEmpty())
+        if (DataManager.Instance.currentGameData.loginCount == 0)
         {
-            TryTrigger("notification_minh");
+            TryTrigger("goldfish");
         }
     }
 
@@ -31,27 +29,34 @@ public class TriggerManager : Singleton<TriggerManager>
             case "normal_ending":
                 ShowEnding();
                 break;
-            case "notification_minh":
-                ShowBillBoard(minh);
+            case "goldfish":
+                ShowBillBoard(triggerID);
                 break;
-            case "notification_duy":
-                ShowBillBoard(duy);
+            case "fisher":
+                ShowBillBoard(triggerID);
                 break;
-            case "notification_tuan":
-                ShowBillBoard(tuan);
+            case "village":
+                ShowBillBoard(triggerID);
                 break;
-            case "notification_huy":
-                ShowBillBoard(huy);
+            case "mayor":
+                ShowBillBoard(triggerID);
                 break;
-            case "notification_hide":
+            case "hide":
                 HideBillBoard();
                 break;
         }
     }
 
-    void ShowBillBoard(Transform npc)
+    void ShowBillBoard(string id)
     {
-        billboard.target = npc;
+        foreach (NPCInteracttive npc in nPCs)
+        {
+            if (npc.GetName() == id)
+            {
+                billboard.target = npc.GetTransform();
+                break;
+            }
+        }
         billboard.Show();
     }
 

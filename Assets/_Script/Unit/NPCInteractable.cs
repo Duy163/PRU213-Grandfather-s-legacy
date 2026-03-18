@@ -7,7 +7,7 @@ public class NPCInteracttive : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        return "Hold [F] Talk";
+        return "giữ [F] tương tác";
     }
 
     public bool CanInteract()
@@ -23,5 +23,10 @@ public class NPCInteracttive : MonoBehaviour, IInteractable
     public Transform GetTransform()
     {
         return transform;
+    }
+
+    public string GetName()
+    {
+        return data.npcID;
     }
 }

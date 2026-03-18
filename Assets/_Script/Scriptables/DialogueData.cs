@@ -15,6 +15,7 @@ public class DialogueLine
     [TextArea]
     public string text;
     public Sprite portrait;
+    public AudioClip clip;
 
     // Hành động sau khi nói dòng này
     public string setFlagAfter;      // bật flag

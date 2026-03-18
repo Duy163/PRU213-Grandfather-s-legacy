@@ -31,7 +31,7 @@ public class DockInteractable : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        return "Hold [F] Dock Ship";
+        return "Giữ [F] để neo";
     }
 
     public bool CanInteract()

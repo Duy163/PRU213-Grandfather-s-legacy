@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class ShipController : MonoBehaviour
@@ -8,20 +9,30 @@ public class ShipController : MonoBehaviour
 
     float waterDrag;
     float idleDrag;
+    bool isRunning = false;
 
     Rigidbody rb;
     [SerializeField] Light lamp;
+    [SerializeField] Transform propeller;
+    [SerializeField] SkinnedMeshRenderer boom;
+
+    [Header("Visuals")] // MỚI THÊM: Tạo một mục cho dễ nhìn trong Inspector
+    [SerializeField] float propellerSpeed = 800f; // MỚI THÊM: Tốc độ xoay chân vịt
+
+    [SerializeField] Transform motorPivot; // Kéo thả MotorPivot tạo ở Bước 1 vào đây
+    [SerializeField] float maxTiltAngle = 10f; // Góc nghiêng tối đa (độ)
+    [SerializeField] float tiltSpeed = 5f; // Tốc độ nghiêng (càng lớn càng nhanh)
 
     // ================= Unity Lifecycle ===================
 
     void OnEnable()
     {
-        InputEvent.OnLampPress += ToggerLamp;
+        InputEvent.OnLampPress += ToggerSail;
     }
 
     void OnDisable()
     {
-        InputEvent.OnLampPress -= ToggerLamp;
+        InputEvent.OnLampPress -= ToggerSail;
     }
 
     void Start()
@@ -35,6 +46,40 @@ public class ShipController : MonoBehaviour
         Vector2 move = InputManager.Instance.GetMovement();
         float h = move.x;
         float v = move.y;
+
+        if (propeller != null)
+        {
+            float forwardSpeed = transform.InverseTransformDirection(rb.linearVelocity).z;
+            float normalizedSpeed = forwardSpeed / shipManager.playerShipData.maxSpeed;
+
+            if (Mathf.Abs(normalizedSpeed) > 0.01f)
+            {
+                propeller.Rotate(Vector3.right * normalizedSpeed * propellerSpeed * Time.fixedDeltaTime);
+
+                if (!isRunning)
+                {
+                    isRunning = true;
+                    AudioManager.Instance.PlayShipMove(isRunning);
+                }
+                AudioManager.Instance.UpdateShipEnginePitch(Mathf.Abs(normalizedSpeed));
+            }
+            else
+            {
+                // Nếu tàu đã dừng nhưng trạng thái âm thanh vẫn đang bật -> Tắt đi
+                if (isRunning)
+                {
+                    isRunning = false;
+                    AudioManager.Instance.PlayShipMove(isRunning);
+                }
+            }
+        }
+
+        if (motorPivot != null)
+        {
+            float targetAngle = h * maxTiltAngle; // maxTiltAngle giả sử là 30 độ
+            Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
+            motorPivot.localRotation = Quaternion.Lerp(motorPivot.localRotation, targetRotation, Time.fixedDeltaTime * tiltSpeed);
+        }
 
         // Di chuyển
         if (v != 0)
@@ -69,9 +114,6 @@ public class ShipController : MonoBehaviour
             );
         }
     }
-
-    // ================= Input Handling ====================
-
     // ================= Initialization ====================
 
     public void LoadShipData()
@@ -95,5 +137,21 @@ public class ShipController : MonoBehaviour
     {
         if (shipManager.playerShipData.hasLamp)
             lamp.enabled = !lamp.enabled;
+    }
+
+    private void ToggerSail()
+    {
+        if (boom != null)
+            boom.SetBlendShapeWeight(0, boom.GetBlendShapeWeight(0) == 0 ? 100 : 0);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        float impactForce = collision.relativeVelocity.magnitude;
+
+        if (impactForce > 2f)
+        {
+            AudioManager.Instance.PlayShipCrash(impactForce);
+        }
     }
 }

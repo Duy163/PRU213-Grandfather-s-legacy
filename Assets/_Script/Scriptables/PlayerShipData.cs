@@ -33,7 +33,7 @@ public class PlayerShipData
         turnStrengthLv = 0;
         hasLamp = false;
 
-        position = new Vector3(150, 0, 60);
+        position = new Vector3(0, 0, -42);
         rotation = new Vector3(0, 0, 0);
     }
 }

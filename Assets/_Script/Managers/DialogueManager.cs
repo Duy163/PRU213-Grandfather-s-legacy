@@ -50,6 +50,7 @@ public class DialogueManager : MonoBehaviour
         var line = current.lines[lineIndex];
 
         dialogueView.UpdateDialogue(line);
+        if (line.clip != null) AudioManager.Instance.PlaySoundDialogue(line.clip);
 
         bool hasNextLine = lineIndex < current.lines.Count - 1;
         dialogueView.ShowContinuePrompt(hasNextLine);

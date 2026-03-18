@@ -23,3 +23,36 @@ MonoBehaviour:
     checkType: 0
     checkQuestID: 
     checkStep: 0
+  - dialogue: {fileID: 11400000, guid: 1aa4bb8735d3b804086cb9d2e987ea66, type: 2}
+    priority: 10
+    oneTimeOnly: 1
+    conditions:
+    - type: 0
+      key: ready_quest_1
+      value: 0
+    editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: f1af7eb4c2c60d042a6d652bb0231e39, type: 2}
+    priority: 20
+    oneTimeOnly: 0
+    conditions:
+    - type: 5
+      key: quest_1
+      value: 0
+    editorNote: 
+    checkType: 2
+    checkQuestID: quest_1
+    checkStep: 0
+  - dialogue: {fileID: 11400000, guid: f4c700e6f04d66f4882c5fd94bef31f5, type: 2}
+    priority: 15
+    oneTimeOnly: 0
+    conditions:
+    - type: 5
+      key: quest_1
+      value: 0
+    editorNote: 
+    checkType: 0
+    checkQuestID: 
+    checkStep: 0

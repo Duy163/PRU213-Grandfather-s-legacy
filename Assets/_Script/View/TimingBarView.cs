@@ -56,7 +56,7 @@ public class TimingBarView : BasePanel
         trackZone.localEulerAngles = Vector3.zero;
         processMaker.fillAmount = 0f;
 
-        TextNameItem.text = vm.award.name;
+        TextNameItem.text = vm.award.itemName;
 
         DeleteMaker(roundMarkerParent);
         AddMarker(roundMarkerPrefab, roundMarkerParent, vm.totalRounds);
