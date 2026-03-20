@@ -18,6 +18,7 @@ public class AudioManager : Singleton<AudioManager>
     public AudioClip catchSuccess;
     public AudioClip catchFail;
     public AudioClip woodenThud;
+    public AudioClip fishingRell;
 
     public List<AudioClip> listVillageSound;
 
@@ -146,6 +147,11 @@ public class AudioManager : Singleton<AudioManager>
     {
         SFXSource.Stop();
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void PlayFishingrell()
+    {
+        SFXSource.PlayOneShot(fishingRell);
     }
 
     public void PlayShipCrash(float force = 5f)

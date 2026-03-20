@@ -5,6 +5,12 @@ public class NPCInteracttive : MonoBehaviour, IInteractable
     [SerializeField] private NPCData data;
     [SerializeField] private StoryDatabase database;
 
+    private Animator anim;
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     public string GetInteractPrompt()
     {
         return "giữ [F] tương tác";
@@ -18,6 +24,7 @@ public class NPCInteracttive : MonoBehaviour, IInteractable
     public void Interact()
     {
         StoryEvent.OnStartDialogue?.Invoke(data, database);
+        TriggerAnimTalking();
     }
 
     public Transform GetTransform()
@@ -28,5 +35,15 @@ public class NPCInteracttive : MonoBehaviour, IInteractable
     public string GetName()
     {
         return data.npcID;
+    }
+
+    public void TriggerAnimTalking()
+    {
+        anim.SetTrigger("TriggerTalking");
+    }
+
+    public void TriggerAnimCompleteQuest()
+    {
+        anim.SetTrigger("TriggerCompleteQuest");
     }
 }

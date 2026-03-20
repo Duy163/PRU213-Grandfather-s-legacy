@@ -17,6 +17,7 @@ MonoBehaviour:
   - speakerName: "D\xE2n l\xE0ng"
     text: "wow nhanh th\u1EADt \u0111\u1EA5y "
     portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    clip: {fileID: 8300000, guid: 974d340b754e9894d8bfe39721dfbc7d, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: goldfish

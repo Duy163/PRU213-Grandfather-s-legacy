@@ -4,6 +4,7 @@ public class FishingManager : MonoBehaviour
 {
     [SerializeField] TimingBarView timingBarView;
     [SerializeField] CameraManager cameraManager;
+    [SerializeField] PlayerController playerController;
 
     private IFishingMinigame vm;
     private ItemData item;
@@ -28,6 +29,9 @@ public class FishingManager : MonoBehaviour
         this.spot = spot;
         isFishing = true;
 
+        playerController.SetFishing(isFishing);
+        AudioManager.Instance.PlayFishingrell();
+
         InventoryManager.Instance.OnOpenInventoryPressed();
         cameraManager.EnterFishingView();
 
@@ -41,6 +45,7 @@ public class FishingManager : MonoBehaviour
     {
         isFishing = false;
 
+        playerController.SetFishing(isFishing);
         InventoryManager.Instance.OnCloseInventoryPressed();
         cameraManager.NormalView();
 

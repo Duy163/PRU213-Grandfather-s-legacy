@@ -18,6 +18,7 @@ MonoBehaviour:
     text: "Ch\xE0o \xF4ng l\xE3o. T\xF4i ch\u01B0a t\u1EEBng th\u1EA5y \xF4ng \u1EDF
       b\u1EBFn c\u1EA3ng n\xE0y."
     portrait: {fileID: 21300000, guid: 67a9ebef19696f842a9101128484f715, type: 3}
+    clip: {fileID: 8300000, guid: c470c1ecff6332843be165737bbe5b62, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -26,12 +27,14 @@ MonoBehaviour:
       m\u1ED9t ng\u01B0 d\xE2n \u0111ang t\xECm nh\u1EEFng v\xF9ng bi\u1EC3n c\xF3
       nhi\u1EC1u c\xE1."
     portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 8300000, guid: 792883291f218a04f996b4ded5e86d1e, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
   - speakerName: "Thuy\u1EC1n Tr\u01B0\u1EDFng"
     text: "V\u1EADy th\xEC \xF4ng \u0111\u1EBFn \u0111\xFAng n\u01A1i r\u1ED3i."
     portrait: {fileID: 21300000, guid: 67a9ebef19696f842a9101128484f715, type: 3}
+    clip: {fileID: 8300000, guid: f72c9d87b67f4b84eb40a84c2f4daaff, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -39,12 +42,14 @@ MonoBehaviour:
     text: "\u0110\u1EA3o n\xE0y l\xE0 n\u01A1i nhi\u1EC1u ng\u01B0 d\xE2n mang c\xE1
       \u0111\u1EBFn b\xE1n cho c\xE1c t\xE0u bu\xF4n nh\u01B0 ch\xFAng t\xF4i."
     portrait: {fileID: 21300000, guid: 67a9ebef19696f842a9101128484f715, type: 3}
+    clip: {fileID: 8300000, guid: b2f89cfbe5a164f4da366aceacd5c208, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
   - speakerName: "\xD4ng L\xE3o"
     text: "C\xF3 v\u1EBB n\u01A1i n\xE0y r\u1EA5t nh\u1ED9n nh\u1ECBp."
     portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 8300000, guid: 51bf0ef69b3d0d1448f8b6f21d61cf75, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -52,6 +57,7 @@ MonoBehaviour:
     text: "\u0110\xFAng v\u1EADy. Nh\u01B0ng kh\xF4ng ph\u1EA3i ai c\u0169ng c\xE2u
       \u0111\u01B0\u1EE3c nh\u1EEFng con c\xE1 t\u1ED1t."
     portrait: {fileID: 21300000, guid: 67a9ebef19696f842a9101128484f715, type: 3}
+    clip: {fileID: 8300000, guid: 2b8b7fe0ecaadda46b5d51b711572e98, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -59,6 +65,7 @@ MonoBehaviour:
     text: "Bi\u1EC3n quanh \u0111\u1EA3o n\xE0y c\xF3 nhi\u1EC1u c\xE1, nh\u01B0ng
       c\u1EA7n bi\u1EBFt ch\u1ED7 \u0111\u1EC3 c\xE2u."
     portrait: {fileID: 21300000, guid: 67a9ebef19696f842a9101128484f715, type: 3}
+    clip: {fileID: 8300000, guid: 4d839123f312754489b9052bbcc2c352, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -66,12 +73,14 @@ MonoBehaviour:
     text: "Ta \u0111\xE3 \u0111i qua nhi\u1EC1u v\xF9ng bi\u1EC3n. N\u1EBFu \u1EDF
       \u0111\xE2y c\xF3 c\xE1, ta s\u1EBD c\xE2u \u0111\u01B0\u1EE3c."
     portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 8300000, guid: 343416adafe3f3e408ea25157aabc7ef, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
   - speakerName: "Thuy\u1EC1n Tr\u01B0\u1EDFng"
     text: "V\u1EADy h\xE3y \u0111\u1EC3 t\xF4i xem kh\u1EA3 n\u0103ng c\u1EE7a \xF4ng."
     portrait: {fileID: 21300000, guid: 67a9ebef19696f842a9101128484f715, type: 3}
+    clip: {fileID: 8300000, guid: cdf0a1fd50c45624894255deb0b65798, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: hide
@@ -79,12 +88,14 @@ MonoBehaviour:
     text: "Ra v\xF9ng n\u01B0\u1EDBc quanh c\u1EA3ng v\xE0 c\xE2u m\u1ED9t \xEDt
       c\xE1 mang v\u1EC1 \u0111\xE2y."
     portrait: {fileID: 21300000, guid: 67a9ebef19696f842a9101128484f715, type: 3}
+    clip: {fileID: 8300000, guid: 5831005dafdfb784db6debc517f8e493, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
   - speakerName: "Thuy\u1EC1n Tr\u01B0\u1EDFng"
     text: "Sau \u0111\xF3 ch\xFAng ta s\u1EBD n\xF3i chuy\u1EC7n ti\u1EBFp."
     portrait: {fileID: 21300000, guid: 67a9ebef19696f842a9101128484f715, type: 3}
+    clip: {fileID: 8300000, guid: 5e8fb8ff763bad9459eccb7be956641c, type: 3}
     setFlagAfter: 
     triggerQuestID: quest_3
     triggerID: hide

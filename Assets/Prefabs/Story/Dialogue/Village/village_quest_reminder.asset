@@ -17,6 +17,7 @@ MonoBehaviour:
   - speakerName: "D\xE2n l\xE0ng"
     text: "r\xE1ng th\u1EED t\xECm th\xEAm xem"
     portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    clip: {fileID: 8300000, guid: 657a39b733b560349ba82469911e863f, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 

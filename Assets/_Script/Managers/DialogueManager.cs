@@ -1,6 +1,4 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -84,6 +82,26 @@ public class DialogueManager : MonoBehaviour
         if (!string.IsNullOrEmpty(line.triggerID))
             TriggerManager.Instance.TryTrigger(line.triggerID);
 
+    }
+
+    // ── Skip ──────────────
+
+    public void SkipDialogue()
+    {
+        if (!isPlaying || current == null) return;
+
+        // BƯỚC QUAN TRỌNG: Duyệt qua TẤT CẢ các dòng còn lại chưa được Next 
+        // để kích hoạt hết Flag, Quest và Trigger nhằm tránh lỗi logic game.
+        for (int i = lineIndex; i < current.lines.Count; i++)
+        {
+            ProcessLineActions(current.lines[i]);
+        }
+
+        // Tùy chọn: Tắt âm thanh hội thoại đang chạy dở (nếu AudioManager của bạn có hỗ trợ)
+        // AudioManager.Instance.StopSoundDialogue();
+
+        // Chạy thẳng đến kết thúc
+        EndDialogue();
     }
 
     // ── KẾT THÚC DIALOGUE ─────────────────────────────

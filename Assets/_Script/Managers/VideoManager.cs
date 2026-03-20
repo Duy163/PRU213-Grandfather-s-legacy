@@ -13,6 +13,8 @@ public class VideoManager : MonoBehaviour
     [SerializeField] GameObject worldPanel;
     [SerializeField] GameObject playerPanel;
     [SerializeField] GameObject mainPanel;
+    [SerializeField] GameObject skipButton;
+
     void Start()
     {
 
@@ -34,6 +36,7 @@ public class VideoManager : MonoBehaviour
         worldPanel.SetActive(false);
         playerPanel.SetActive(false);
         mainPanel.SetActive(false);
+        skipButton.SetActive(true);
         videoPlayer.gameObject.SetActive(true);
         InputManager.Instance.EnableEnding();
         AudioManager.Instance.PauseMusic();
@@ -58,6 +61,19 @@ public class VideoManager : MonoBehaviour
         worldPanel.SetActive(true);
         playerPanel.SetActive(true);
         mainPanel.SetActive(true);
+        skipButton.SetActive(false);
+        InputManager.Instance.EnableShip();
+        AudioManager.Instance.ContinueMusic();
+        videoPlayer.gameObject.SetActive(false);
+        StoryEvent.OnBeginDialogue?.Invoke();
+    }
+
+    public void SkipVideo()
+    {
+        worldPanel.SetActive(true);
+        playerPanel.SetActive(true);
+        mainPanel.SetActive(true);
+        skipButton.SetActive(false);
         InputManager.Instance.EnableShip();
         AudioManager.Instance.ContinueMusic();
         videoPlayer.gameObject.SetActive(false);

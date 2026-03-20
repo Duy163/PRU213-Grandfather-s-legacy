@@ -17,6 +17,7 @@ MonoBehaviour:
   - speakerName: "Ng\u01B0 d\xE2n"
     text: "ch\u01B0a \u0111\u1EE7 \u0111\xE2u r\xE1ng t\xED n\u1EEFa nh\xE1 haha"
     portrait: {fileID: 21300000, guid: 8b4bf688b69895545a90e115c6bf2643, type: 3}
+    clip: {fileID: 8300000, guid: a9cd71001a986834a80878915af78e33, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 

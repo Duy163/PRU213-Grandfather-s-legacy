@@ -18,12 +18,14 @@ MonoBehaviour:
     text: "Ta hi\u1EBFm khi th\u1EA5y thuy\u1EC1n l\u1EA1 \u0111\u1EBFn n\u01A1i
       n\xE0y."
     portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    clip: {fileID: 8300000, guid: 76fc57fb74dcb0f4c9877d7f8e91f928, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
   - speakerName: "D\xE2n l\xE0ng"
     text: "C\u1EADu \u0111\u1EBFn \u0111\xE2y \u0111\u1EC3 \u0111\xE1nh c\xE1 \xE0?"
     portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    clip: {fileID: 8300000, guid: 4270d0d7c6476f840b924c6ddb863862, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -31,6 +33,7 @@ MonoBehaviour:
     text: "\u0110\xFAng v\u1EADy. Ta nghe n\xF3i v\xF9ng n\u01B0\u1EDBc \u1EDF \u0111\xE2y
       c\xF3 nhi\u1EC1u c\xE1."
     portrait: {fileID: 21300000, guid: 23435321e5ba75444bd6bd462935adf3, type: 3}
+    clip: {fileID: 8300000, guid: 6a3a4f93069605c4498eafe491225442, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -38,6 +41,7 @@ MonoBehaviour:
     text: "C\xF3 nhi\u1EC1u c\xE1 th\u1EADt\u2026 nh\u01B0ng kh\xF4ng d\u1EC5 b\u1EAFt
       \u0111\xE2u."
     portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    clip: {fileID: 8300000, guid: bbd78c51a6c62c24baeb70717f7d43d2, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -45,6 +49,7 @@ MonoBehaviour:
     text: "N\u1EBFu c\u1EADu mu\u1ED1n \u0111\xE1nh c\xE1 \u1EDF \u0111\xE2y, h\xE3y
       th\u1EED ra v\xF9ng \u0111\u1EA7m ph\xEDa tr\u01B0\u1EDBc."
     portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    clip: {fileID: 8300000, guid: 23c765ab476a6214a9c0db9db7ae7047, type: 3}
     setFlagAfter: 
     triggerQuestID: 
     triggerID: 
@@ -52,6 +57,7 @@ MonoBehaviour:
     text: "\u1EDE \u0111\xF3 c\xF3 v\xE0i lo\u1EA1i c\xE1 m\xE0 v\xF9ng bi\u1EC3n
       kh\xE1c kh\xF4ng c\xF3."
     portrait: {fileID: 21300000, guid: 19e6ccc92e6e81a4f82e82741d75cf5e, type: 3}
+    clip: {fileID: 8300000, guid: 63910b20d4f1c0d46b21305f1d8f04c2, type: 3}
     setFlagAfter: 
     triggerQuestID: quest_2
     triggerID: hide

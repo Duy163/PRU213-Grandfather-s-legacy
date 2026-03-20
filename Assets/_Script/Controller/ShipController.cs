@@ -6,15 +6,14 @@ public class ShipController : MonoBehaviour
 
     // ================= State =============================
     [SerializeField] ShipManager shipManager;
+    [SerializeField] PlayerController playerController;
 
     float waterDrag;
     float idleDrag;
     bool isRunning = false;
 
     Rigidbody rb;
-    [SerializeField] Light lamp;
     [SerializeField] Transform propeller;
-    [SerializeField] SkinnedMeshRenderer boom;
 
     [Header("Visuals")] // MỚI THÊM: Tạo một mục cho dễ nhìn trong Inspector
     [SerializeField] float propellerSpeed = 800f; // MỚI THÊM: Tốc độ xoay chân vịt
@@ -24,16 +23,6 @@ public class ShipController : MonoBehaviour
     [SerializeField] float tiltSpeed = 5f; // Tốc độ nghiêng (càng lớn càng nhanh)
 
     // ================= Unity Lifecycle ===================
-
-    void OnEnable()
-    {
-        InputEvent.OnLampPress += ToggerSail;
-    }
-
-    void OnDisable()
-    {
-        InputEvent.OnLampPress -= ToggerSail;
-    }
 
     void Start()
     {
@@ -59,6 +48,7 @@ public class ShipController : MonoBehaviour
                 if (!isRunning)
                 {
                     isRunning = true;
+                    playerController.SetPadding(isRunning);
                     AudioManager.Instance.PlayShipMove(isRunning);
                 }
                 AudioManager.Instance.UpdateShipEnginePitch(Mathf.Abs(normalizedSpeed));
@@ -69,6 +59,7 @@ public class ShipController : MonoBehaviour
                 if (isRunning)
                 {
                     isRunning = false;
+                    playerController.SetPadding(isRunning);
                     AudioManager.Instance.PlayShipMove(isRunning);
                 }
             }
@@ -131,18 +122,6 @@ public class ShipController : MonoBehaviour
 
         waterDrag = shipManager.playerShipData.waterDrag;
         idleDrag = shipManager.playerShipData.idleDrag;
-    }
-
-    private void ToggerLamp()
-    {
-        if (shipManager.playerShipData.hasLamp)
-            lamp.enabled = !lamp.enabled;
-    }
-
-    private void ToggerSail()
-    {
-        if (boom != null)
-            boom.SetBlendShapeWeight(0, boom.GetBlendShapeWeight(0) == 0 ? 100 : 0);
     }
 
     private void OnCollisionEnter(Collision collision)
