@@ -39,11 +39,13 @@ public class NPCInteracttive : MonoBehaviour, IInteractable
 
     public void TriggerAnimTalking()
     {
-        anim.SetTrigger("TriggerTalking");
+        if (anim != null)
+            anim.SetTrigger("TriggerTalking");
     }
 
     public void TriggerAnimCompleteQuest()
     {
-        anim.SetTrigger("TriggerCompleteQuest");
+        if (anim != null)
+            anim.SetTrigger("TriggerCompleteQuest");
     }
 }

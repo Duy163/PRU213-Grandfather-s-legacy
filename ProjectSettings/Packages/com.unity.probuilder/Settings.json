@@ -62,6 +62,11 @@
                 "value": "{\"m_Value\":false}"
             },
             {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "editor.stripProBuilderScriptsOnBuild",
+                "value": "{\"m_Value\":true}"
+            },
+            {
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ShapeBuilder.ActiveShapeIndex",
                 "value": "{\"m_Value\":1}"
@@ -69,7 +74,7 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Plane",
-                "value": "{\"m_Value\":{\"x\":-1386.9384765625,\"y\":0.0,\"z\":905.4254150390625}}"
+                "value": "{\"m_Value\":{\"x\":-30.618080139160158,\"y\":0.0,\"z\":59.96617126464844}}"
             },
             {
                 "type": "UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",

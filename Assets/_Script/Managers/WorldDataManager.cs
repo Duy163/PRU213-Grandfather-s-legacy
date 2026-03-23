@@ -34,6 +34,7 @@ public class WorldDataManager : Singleton<WorldDataManager>
     {
         timeView.Show();
         cameraManager.EnterIslandView(dockName);
+        AudioManager.Instance.PlayMusic("dock");
         InputManager.Instance.EnableDock();
     }
 
@@ -41,6 +42,7 @@ public class WorldDataManager : Singleton<WorldDataManager>
     {
         timeView.Hide();
         cameraManager.NormalView();
+        AudioManager.Instance.PlayMusic("background");
         InputManager.Instance.EnableShip();
     }
 

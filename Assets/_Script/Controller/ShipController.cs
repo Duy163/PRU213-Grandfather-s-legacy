@@ -13,11 +13,12 @@ public class ShipController : MonoBehaviour
     bool isRunning = false;
 
     Rigidbody rb;
-    [SerializeField] Transform propeller;
+
 
     [Header("Visuals")] // MỚI THÊM: Tạo một mục cho dễ nhìn trong Inspector
     [SerializeField] float propellerSpeed = 800f; // MỚI THÊM: Tốc độ xoay chân vịt
 
+    [SerializeField] Transform propeller;
     [SerializeField] Transform motorPivot; // Kéo thả MotorPivot tạo ở Bước 1 vào đây
     [SerializeField] float maxTiltAngle = 10f; // Góc nghiêng tối đa (độ)
     [SerializeField] float tiltSpeed = 5f; // Tốc độ nghiêng (càng lớn càng nhanh)
@@ -44,7 +45,16 @@ public class ShipController : MonoBehaviour
             if (Mathf.Abs(normalizedSpeed) > 0.01f)
             {
                 propeller.Rotate(Vector3.right * normalizedSpeed * propellerSpeed * Time.fixedDeltaTime);
+            }
+        }
 
+        if (playerController != null)
+        {
+            float forwardSpeed = transform.InverseTransformDirection(rb.linearVelocity).z;
+            float normalizedSpeed = forwardSpeed / shipManager.playerShipData.maxSpeed;
+
+            if (h != 0 || v != 0)
+            {
                 if (!isRunning)
                 {
                     isRunning = true;
@@ -55,7 +65,6 @@ public class ShipController : MonoBehaviour
             }
             else
             {
-                // Nếu tàu đã dừng nhưng trạng thái âm thanh vẫn đang bật -> Tắt đi
                 if (isRunning)
                 {
                     isRunning = false;
@@ -81,9 +90,14 @@ public class ShipController : MonoBehaviour
             rb.linearVelocity = rb.linearVelocity.normalized * shipManager.playerShipData.maxSpeed;
 
         // Xoay
-        if (rb.linearVelocity.magnitude > 0.5f)
-            rb.AddTorque(Vector3.up * h * shipManager.playerShipData.turnStrength, ForceMode.Acceleration);
-
+        if (Mathf.Abs(v) > 0.1f || rb.linearVelocity.magnitude > 0.1f)
+        {
+            // LƯU Ý: Nếu h != 0 thì mới bẻ lái, tránh gọi AddTorque liên tục bằng 0
+            if (h != 0)
+            {
+                rb.AddTorque(Vector3.up * h * shipManager.playerShipData.turnStrength, ForceMode.Acceleration);
+            }
+        }
         // Chống trôi ngang
         Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
         localVel.x = Mathf.Lerp(localVel.x, 0, 0.2f);

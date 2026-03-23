@@ -22,9 +22,9 @@ public class PlayerShipData
 
     public PlayerShipData()
     {
-        maxSpeed = 30f;
-        acceleration = 20f;
-        turnStrength = 1f;
+        maxSpeed = 10f;
+        acceleration = 5f;
+        turnStrength = 0.5f;
         waterDrag = 2f;
         idleDrag = 2f;
 
@@ -33,7 +33,7 @@ public class PlayerShipData
         turnStrengthLv = 0;
         hasLamp = false;
 
-        position = new Vector3(0, 0, -42);
-        rotation = new Vector3(0, 0, 0);
+        position = new Vector3(-5, 0, 40);
+        rotation = new Vector3(0, 90f, 0);
     }
 }

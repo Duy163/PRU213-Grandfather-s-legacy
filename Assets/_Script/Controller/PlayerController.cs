@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
         // 3. Reset vị trí về 0 để khớp với Socket
         currentWeapon.transform.localPosition = new Vector3(-0.6f, 0.08f, 0.1f);
-        currentWeapon.transform.localRotation = Quaternion.Euler(0, -90, -90);
+        currentWeapon.transform.localRotation = Quaternion.Euler(0, 0, 90f);
     }
 
 }

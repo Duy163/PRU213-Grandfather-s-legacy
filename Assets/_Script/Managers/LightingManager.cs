@@ -130,12 +130,12 @@ public class LightingManager : MonoBehaviour
         if (enableFog)
         {
             RenderSettings.fog = true;
-            RenderSettings.fogMode = FogMode.Exponential;
+            // RenderSettings.fogMode = FogMode.Exponential;
 
-            if (fogDensity != null)
-            {
-                RenderSettings.fogDensity = fogDensity.Evaluate(timePercent);
-            }
+            // if (fogDensity != null)
+            // {
+            //     RenderSettings.fogDensity = fogDensity.Evaluate(timePercent);
+            // }
         }
         else
         {

@@ -13,6 +13,7 @@ public class AudioManager : Singleton<AudioManager>
 
     [Header("------------------------------------")]
     public AudioClip menu;
+    public AudioClip dock;
     public AudioClip seaWave;
     public AudioClip shipMove;
     public AudioClip catchSuccess;
@@ -55,8 +56,10 @@ public class AudioManager : Singleton<AudioManager>
     {
         switch (nameMusic)
         {
+            case "dock":
+                musicSource.clip = dock;
+                break;
             case "background":
-
                 musicSource.clip = seaWave;
                 break;
             case "menu":
@@ -65,6 +68,11 @@ public class AudioManager : Singleton<AudioManager>
                 break;
         }
         musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
     }
 
     public void PauseMusic()
@@ -147,6 +155,12 @@ public class AudioManager : Singleton<AudioManager>
     {
         SFXSource.Stop();
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void StopSoundSFX()
+    {
+        SFXSource.Stop();
+
     }
 
     public void PlayFishingrell()

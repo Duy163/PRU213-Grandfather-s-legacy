@@ -136,11 +136,13 @@ Material:
     - _DstBlendAlpha: 10
     - _EnvironmentReflections: 1
     - _FoamScale: 1
+    - _FoamSize: 0.15
     - _FoamSpeed: 1
     - _FoamStrength: 0.3
     - _Foam_Amount: 1
     - _Foam_Cut_Off: 1
-    - _Frequency: 1
+    - _Frequency: 0.2
+    - _Frequency_1: 0.2
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -151,6 +153,8 @@ Material:
     - _OPACITY: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _Peak: 2
+    - _Peak_1: 2
     - _QueueControl: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -158,19 +162,25 @@ Material:
     - _RippleSpeed: 0.3
     - _SPECULAR_IOR: 1.5
     - _SPECULAR_ROUGHNESS: 0
-    - _Smoothness: 0.5
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.5
+    - _Speed: 2
+    - _Speed_1: 2
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 1
+    - _WaterClarity: 10
     - _Water_Depth: 15
-    - _WaveAmplitude: 1
-    - _WaveFrequency: 300
-    - _WaveHeight: 0.5
+    - _WaveAmplitude: 0.2
+    - _WaveAmplitude_1: 0.2
+    - _WaveFrequency: 1
+    - _WaveFrequency_1: 1
+    - _WaveHeight: 1
+    - _WaveHeight_1: 1
     - _WaveScale: 1
-    - _WaveSpeed: 1
+    - _WaveSpeed: 0.5
+    - _WaveSpeed_1: 0.5
     - _WorkflowMode: 0
     - _XRMotionVectorsPass: 1
     - _ZWrite: 0
@@ -181,13 +191,17 @@ Material:
     - _ColorA: {r: 0.049999982, g: 0.39999998, b: 0.6, a: 1}
     - _ColorB: {r: 0.09999997, g: 0.6, b: 0.8, a: 1}
     - _DeepColor: {r: 0, g: 0.43524715, b: 0.6, a: 1}
-    - _Depth_Color: {r: 0.13710928, g: 0.46022204, b: 0.4943396, a: 1}
+    - _DeepWaterColor: {r: 0, g: 0.9826088, b: 1, a: 1}
+    - _Depth_Color: {r: 0, g: 0.34117648, b: 0.3882353, a: 1}
+    - _Direction: {r: 1, g: 0, b: 0, a: 0}
+    - _Direction_1: {r: 1, g: 0, b: -0.79, a: 0}
     - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _SPECULAR_COLOR: {r: 1, g: 1, b: 1, a: 0}
     - _ShallowColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Shallow_Color: {r: 0.18823527, g: 0.7259496, b: 0.81960785, a: 1}
+    - _ShallowWaterColor: {r: 0.3226415, g: 1, b: 0.9241782, a: 1}
+    - _Shallow_Color: {r: 0, g: 0.7490196, b: 0.79607844, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

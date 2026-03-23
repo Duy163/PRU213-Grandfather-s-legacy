@@ -6,6 +6,7 @@ public class TriggerManager : Singleton<TriggerManager>
     [Header("UI")]
     [SerializeField] private EndingView endingView;
     [SerializeField] private Billboard billboard;
+    [SerializeField] private CompassView compassView;
 
     [SerializeField] List<NPCInteracttive> nPCs;
 
@@ -53,16 +54,16 @@ public class TriggerManager : Singleton<TriggerManager>
         {
             if (npc.GetName() == id)
             {
-                billboard.target = npc.GetTransform();
+                // billboard.target = npc.GetTransform();
+                compassView.currentQuestTarget = npc.GetTransform();
                 break;
             }
         }
-        billboard.Show();
     }
 
     void HideBillBoard()
     {
-        billboard.Hide();
+        compassView.currentQuestTarget = null;
     }
 
     void ShowEnding()

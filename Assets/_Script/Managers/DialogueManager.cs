@@ -101,6 +101,7 @@ public class DialogueManager : MonoBehaviour
         // AudioManager.Instance.StopSoundDialogue();
 
         // Chạy thẳng đến kết thúc
+        AudioManager.Instance.StopSoundSFX();
         EndDialogue();
     }
 

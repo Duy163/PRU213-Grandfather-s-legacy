@@ -10,7 +10,7 @@ public class EconomyData
 
     public EconomyData()
     {
-        currentMoney = 100000f;
+        currentMoney = 100f;
         shopPrices = new Dictionary<string, float>();
         transactions = new List<TransactionHistory>();
         shopInventories = new Dictionary<string, List<string>>();
